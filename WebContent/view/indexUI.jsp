@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<c:url value="/view" var="url"></c:url>
 
 <head>
     <title>DirectoryAds &mdash; Colorlib Website Template</title>
-    <meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="${url}/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${url}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${url}/css/magnific-popup.css">
+    <link rel="stylesheet" href="${url}/css/jquery-ui.css">
+    <link rel="stylesheet" href="${url}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${url}/css/owl.theme.default.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="${url}/css/bootstrap-datepicker.css">
 
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="${url}/fonts/flaticon/font/flaticon.css">
 
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/rangeslider.css">
+    <link rel="stylesheet" href="${url}/css/aos.css">
+    <link rel="stylesheet" href="${url}/css/rangeslider.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="${url}/css/style.css">
+    <link rel="stylesheet" href="${url}/css/search.css">
 
 </head>
 
@@ -105,7 +108,7 @@
             </div>
         </header>
 
-        <div class="site-blocks-cover overlay" style=" background-image:url('images/hero_2.jpg')" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="site-blocks-cover overlay" style=" background-image:url('${url}/images/hero_2.jpg')" data-aos="fade" data-stellar-background-ratio="0.5">
             <div class="container">
                 <div class="row align-items-center justify-content-center text-center">
                     <div class="col-md-12">
@@ -122,8 +125,12 @@
                         <div class="form-search-wrap mb-3" data-aos="fade-up" data-aos-delay={200}>
                             <form method="post">
                                 <div class="row align-items-center">
-                                    <div class="col-lg-12 mb-4 mb-xl-0 col-xl-4">
+                                    <div class="col-lg-12 mb-4 mb-xl-0 col-xl-4 search-input">
                                         <input type="text" class="form-control rounded" placeholder="Enter college name " autoFocus />
+										<div class="autocom-box"></div>
+								        <div class="icon"><i class="fas fa-search"></i>
+        							</div>
+										
                                     </div>
                                     <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
                                         <div class="wrap-icon">
@@ -196,7 +203,7 @@
                 <div class="row mt-5">
                     <div class="col-lg-6">
                         <div class="d-block d-md-flex listing hoverd">
-                            <a href="/searching/detail" class="img d-block" style="background-image: url( 'images/college/cb2.jpg')"></a>
+                            <a href="/searching/detail" class="img d-block" style="background-image: url( '${url}/images/college/cb2.jpg')"></a>
                             <div class="lh-content">
                                 <span class="category">Public University</span>
                                 <a href="#" class="bookmark">
@@ -221,7 +228,7 @@
                             </div>
                         </div>
                         <div class="d-block d-md-flex listing hoverd">
-                            <a href="/searching/detail" class="img d-block" style="background-image: url(  'images/college/hv.jpg') "></a>
+                            <a href="/searching/detail" class="img d-block" style="background-image: url(  '${url}/images/college/hv.jpg') "></a>
                             <div class="lh-content">
                                 <span class="category">Public University</span>
                                 <a href="#" class="bookmark">
@@ -246,7 +253,7 @@
                             </div>
                         </div>
                         <div class="d-block d-md-flex listing hoverd">
-                            <a href="/searching/detail" class="img d-block" style=" background-image:url(' images/college/sf.jpg ')"></a>
+                            <a href="/searching/detail" class="img d-block" style=" background-image:url(' ${url}/images/college/sf.jpg ')"></a>
                             <div class="lh-content">
                                 <span class="category">Public University</span>
                                 <a href="#" class="bookmark">
@@ -274,7 +281,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="d-block d-md-flex listing hoverd">
-                            <a href="/searching/detail" class="img d-block" style="background-image: url( 'images/college/cb2.jpg')"></a>
+                            <a href="/searching/detail" class="img d-block" style="background-image: url( '${url}/images/college/cb2.jpg')"></a>
                             <div class="lh-content">
                                 <span class="category">Public University</span>
                                 <a href="#" class="bookmark">
@@ -299,7 +306,7 @@
                             </div>
                         </div>
                         <div class="d-block d-md-flex listing hoverd">
-                            <a href="/searching/detail" class="img d-block" style="background-image: url(  'images/college/hv.jpg') "></a>
+                            <a href="/searching/detail" class="img d-block" style="background-image: url(  '${url}/images/college/hv.jpg') "></a>
                             <div class="lh-content">
                                 <span class="category">Public University</span>
                                 <a href="#" class="bookmark">
@@ -324,7 +331,7 @@
                             </div>
                         </div>
                         <div class="d-block d-md-flex listing hoverd">
-                            <a href="/searching/detail" class="img d-block" style=" background-image:url(' images/college/sf.jpg ')"></a>
+                            <a href="/searching/detail" class="img d-block" style=" background-image:url('${url}/images/college/sf.jpg ')"></a>
                             <div class="lh-content">
                                 <span class="category">Public University</span>
                                 <a href="#" class="bookmark">
@@ -369,7 +376,7 @@
                     <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                         <div class="h-entry">
                             <a href="/advice/detail">
-                                <img src="/images/nna.jpg" alt="Image" width="330px" height="218px" />
+                                <img src="${url}/images/nna.jpg" alt="Image" width="330px" height="218px" />
                             </a>
                             <h2 class="font-size-regular">
                                 <a href="/advice/detail" class="hovera">
@@ -389,7 +396,7 @@
                         <div class="h-entry ">
                             <a href="/advice/detail">
 
-                                <img src="/images/cnsh.jpg" alt="Image" width="330px" height="218px" />
+                                <img src="${url}/images/cnsh.jpg" alt="Image" width="330px" height="218px" />
                             </a>
                             <h2 class="font-size-regular">
                                 <a href="/advice/detail" class="hovera">
@@ -408,7 +415,7 @@
                     <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                         <div class="h-entry">
                             <a href="/advice/detail">
-                                <img src="/images/cntt.jpg" alt="Image" width="330px" height="218px" />
+                                <img src="${url}//images/cntt.jpg" alt="Image" width="330px" height="218px" />
                             </a>
                             <h2 class="font-size-regular">
                                 <a href="/advice/detail" class="hovera">
@@ -478,20 +485,22 @@
         </footer>
     </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/rangeslider.min.js"></script>
+    <script src="${url}/js/jquery-3.3.1.min.js"></script>
+    <script src="${url}/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="${url}/js/jquery-ui.js"></script>
+    <script src="${url}/js/popper.min.js"></script>
+    <script src="${url}/js/bootstrap.min.js"></script>
+    <script src="${url}/js/owl.carousel.min.js"></script>
+    <script src="${url}/js/jquery.stellar.min.js"></script>
+    <script src="${url}/js/jquery.countdown.min.js"></script>
+    <script src="${url}/js/jquery.magnific-popup.min.js"></script>
+    <script src="${url}/js/bootstrap-datepicker.min.js"></script>
+    <script src="${url}/js/aos.js"></script>
+    <script src="${url}/js/rangeslider.min.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="${url}/js/main.js"></script>
+    
+    <script src="${url}/js/search.js"></script> 
 
 </body>
 
