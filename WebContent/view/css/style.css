@@ -273,7 +273,7 @@ input[type="password"] {
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     padding-bottom: 20px;
     z-index: 5;
 }
@@ -281,10 +281,13 @@ input[type="password"] {
 .propertie-info h5 {
     margin-bottom: 8px;
     font-weight: 400;
+    font-size:18px;
 }
 
 .propertie-info p {
     margin-bottom: 0;
+    font-size:15px;    
+    color: #dadada;
 }
 
 .propertie-info p i {
@@ -1228,7 +1231,7 @@ h5,
     bottom: 0;
     right: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.349);
+    background: rgba(0, 0, 0, 0.26);
 }
 
 .site-blocks-cover2.overlay:before {
@@ -2734,6 +2737,7 @@ h5,
     -ms-flex: 0 0 230px;
     object-fit: contain;
     flex: 0 0 230px;
+    height:250px;
 }
 
 @media (max-width: 767.98px) {
@@ -3055,9 +3059,31 @@ figure figcaption {
 }
 
 .hover-menu a:hover {
+	
     color: rgb(91, 207, 243) !important;
 }
 
 .hover-regis :hover {
     background-color: rgb(91, 207, 243) !important;
+}
+/* add css customize here*/
+.edit-frame{
+	margin-top: 10px;
+}
+.edit-frame .edit-info{
+	  border: 0;
+    outline: 0;
+    font-size: 15px;
+    color: white;
+    background: #08c;
+    border-radius: 4px;
+    padding: 3px 13px;
+	box-shadow: 1px 1px 1px 0px #b7b7b7;
+    cursor: pointer;
+	
+}
+
+
+.edit-frame .edit-info:hover{
+	background: #0af;
 }
