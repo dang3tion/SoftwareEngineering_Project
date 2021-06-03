@@ -59,7 +59,7 @@
                 </a > 
                             </li>
                             <li class="active hover-menu">
-                                <a href="${pageContext.request.contextPath}/view/jsp/page/Filter.jsp">
+                                <a href="${pageContext.request.contextPath}/view/jsp/page/FilterUI.jsp">
                   Trang lọc
                 </a>
                             </li>
@@ -80,7 +80,7 @@
                 </a>
                             </li>
                             <li class="ml-xl-3 login hover-menu">
-                                <a href="${pageContext.request.contextPath}/view/jsp/page/Admin.jsp">
+                                <a href="${pageContext.request.contextPath}/view/jsp/page/AdminUI.jsp">
                                     <span class="border-left pl-xl-4">Đăng nhập</span>
                                 </a>
                             </li>
