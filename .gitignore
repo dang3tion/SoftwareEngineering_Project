@@ -1,5 +1,7 @@
-.settings
-.classpath
-.project
-/build/
-/target/
+.settings/*
+pom.xml
+
+
+target/m2e-wtp/web-resources/META-INF/*
+
+
