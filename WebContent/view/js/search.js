@@ -13,36 +13,36 @@ let webLink;
 inputBox.onkeyup = (e)=>{
     let userData = e.target.value; //user enetered data
     $.ajax({
-    	url:"college-list",
+    	url:"college-list?search-method=ajax",
     	method: "GET",
 		data: {text: userData},
 		success: function(data){
 			suggestions = JSON.parse(data);
+		    let emptyArray = [];
+		    if(userData){
+		        icon.onclick = ()=>{
+		            webLink = "https://www.google.com/search?q=" + userData;
+		            linkTag.setAttribute("href", webLink);
+		            console.log(webLink);
+		            linkTag.click();
+		        }
+				
+		        emptyArray = suggestions.map((data)=>{
+		            // passing return data inside li tag
+		            return data = '<li>'+ data.name +'</li>';
+		        });
+		        searchWrapper.classList.add("active"); //show autocomplete box
+		        showSuggestions(emptyArray);
+		        let allList = suggBox.querySelectorAll("li");
+		        for (let i = 0; i < allList.length; i++) {
+		            //adding onclick attribute in all li tag
+		            allList[i].setAttribute("onclick", "select(this)");
+		        }
+		    }else{
+		        searchWrapper.classList.remove("active"); //hide autocomplete box
+		    }
 		}    	
     })
-    let emptyArray = [];
-    if(userData){
-        icon.onclick = ()=>{
-            webLink = "https://www.google.com/search?q=" + userData;
-            linkTag.setAttribute("href", webLink);
-            console.log(webLink);
-            linkTag.click();
-        }
-
-        emptyArray = suggestions.map((data)=>{
-            // passing return data inside li tag
-            return data = '<li>'+ data +'</li>';
-        });
-        searchWrapper.classList.add("active"); //show autocomplete box
-        showSuggestions(emptyArray);
-        let allList = suggBox.querySelectorAll("li");
-        for (let i = 0; i < allList.length; i++) {
-            //adding onclick attribute in all li tag
-            allList[i].setAttribute("onclick", "select(this)");
-        }
-    }else{
-        searchWrapper.classList.remove("active"); //hide autocomplete box
-    }
 }
 
 function select(element){

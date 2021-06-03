@@ -151,19 +151,11 @@
                           <span class="icon-keyboard_arrow_down"></span>
                                             </span>
                                             <select class="form-control rounded" name id>
-                          <option value>All major</option>
-                          <option value>Information Technology</option>
-                          <option value>Economics</option>
-                          <option value> Mechanics</option>
-                          <option value> Business English</option>
-                          <option value> Finance and Banking</option>
-                          <option value> Business Administration</option>
-                          <option value> Chemical Engineering </option> 
-                          <option value> Trade Marketing</option>
-                          <option value> Nuclear Engineering</option>
-                          <option value> International Trade</option>
-                          <option value>Others</option>
-                        </select>
+					                          <option value="0">All major</option>
+											  <c:forEach items="${courses}" var="item">
+											  	<option value="${item.id}">${item.name}</option>
+											  </c:forEach>
+					                        </select>
                                         </div>
                                     </div>
 
