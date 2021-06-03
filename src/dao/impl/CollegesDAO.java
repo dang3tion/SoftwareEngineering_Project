@@ -1,8 +1,13 @@
 package dao.impl;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import connection.SinglePool;
 import dao.ICollegesDAO;
 import mapper.CollegesMapper;
 import model.CollegesInfo;
@@ -44,11 +49,24 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 	public List<CollegesInfo> searchColleges(String search, Page page, Object... params) {
 		String sql = "SELECT * FROM TRUONGHOC th JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG WHERE th.TENTRUONG LIKE '%"+search+"%'";
 		// filter condition
-		
 		//
 		sql+=" ORDER BY @@CURSOR_ROWS OFFSET "+page.getOffset()+" ROWS FETCH NEXT "+page.getMaxPageItem()+" ROWS ONLY";
-		System.out.println(sql);
 		return query(sql, new CollegesMapper(), null);
+	}
+
+	public List<String> getAllProvince(){
+		List<String> result = new ArrayList<String>();
+		String sql = "SELECT TINH FROM DIACHI GROUP BY TINH HAVING COUNT(TINH) > 0";
+		try {
+			PreparedStatement pt = SinglePool.getConnection().prepareStatement(sql);
+			ResultSet rs = pt.executeQuery();
+			while(rs.next()) {
+				result.add(rs.getNString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }
