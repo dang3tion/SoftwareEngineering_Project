@@ -5,10 +5,7 @@
 <c:url var="url" scope="session" value="/view"></c:url>
 <html>
 <jsp:include page="../component/menu.jsp"></jsp:include>
-
-
 <body>
-
 	     <div class="site-blocks-cover inner-page-cover overlay2" style="background-image: url('${url}/images/college/cb.jpg')" data-aos="fade" data-stellar-background-ratio="0.5">
             <div class="container">
                 <div class="row align-items-center justify-content-center text-center">

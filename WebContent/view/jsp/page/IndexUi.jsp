@@ -18,7 +18,7 @@
 				<div class="col-md-12">
 					<div class="row justify-content-center mb-4">
 						<div class="col-md-8 text-center">
-							<h1 class data-aos="fade-up">Chào mừng đến với IFLY College</h1>
+							<h1  data-aos="fade-up">Chào mừng đến với IFLY College</h1>
 							<p data-aos="fade-up" data-aos-delay={100}>Tìm kiếm ngôi trường thích hợp nhất</p>
 						</div>
 					</div>

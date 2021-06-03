@@ -105,7 +105,7 @@
 								class="bookmark"> <span class="icon-heart"></span>
 							</a>
 							<h3>
-								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/Detail.jsp"> University of
+								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/DetailUI.jsp"> University of
 									Cambridge </a>
 							</h3>
 							<address>
@@ -144,7 +144,7 @@
 									Reviews)</span>
 							</p>
 							<div class="edit-frame">
-								<a href="#">
+								<a href="${pageContext.request.contextPath}/view/jsp/page/AdditionalUI.jsp">
 									<button class="edit-info">Cập nhật thông tin</button>
 								</a>
 							</div>
