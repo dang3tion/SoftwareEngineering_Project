@@ -1,8 +1,13 @@
 package dao.impl;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import connection.SinglePool;
 import dao.ICollegesDAO;
 import mapper.CollegesMapper;
 import model.CollegesInfo;
@@ -42,13 +47,19 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 
 	@Override
 	public List<CollegesInfo> searchColleges(String search, Page page, Object... params) {
-		String sql = "SELECT * FROM TRUONGHOC th JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG WHERE th.TENTRUONG LIKE '%"+search+"%'";
+		String sql = "SELECT * FROM TRUONGHOC th ";
+		sql += "JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG ";
+		sql += "JOIN KHUNGDT_TRUONG kt ON th.ID_TRUONG = kt.ID_TRUONG ";
+		sql += "JOIN NGANH_TOHOP nt ON nt.ID_KDT = kt.ID_KDT ";
+		sql += "JOIN NGANH n ON n.ID_NGANH = nt.ID_NGANH ";
+		sql += "WHERE th.TENTRUONG LIKE '%"+search+"%' ";
 		// filter condition
-		
+		if(params.length > 0) {
+			sql += "AND dc.TINH LIKE ? AND n.TEN_NGANH LIKE ? AND th.LOAITRUONG LIKE ?";
+		}
 		//
 		sql+=" ORDER BY @@CURSOR_ROWS OFFSET "+page.getOffset()+" ROWS FETCH NEXT "+page.getMaxPageItem()+" ROWS ONLY";
-		System.out.println(sql);
-		return query(sql, new CollegesMapper(), null);
+		return query(sql, new CollegesMapper(), params);
 	}
 
 }

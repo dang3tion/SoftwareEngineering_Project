@@ -13,6 +13,8 @@ public class CollegesMapper implements RowMapper<CollegesInfo>{
 		try {
 			info.setId(rs.getInt(1));
 			info.setName(rs.getNString(4));
+			info.setWebsite(rs.getString(6));
+			info.setIntroduce(rs.getNString(7));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

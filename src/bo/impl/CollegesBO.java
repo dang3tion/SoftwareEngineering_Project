@@ -20,6 +20,8 @@ public class CollegesBO implements ICollegesBO{
 	public List<CollegesInfo> searchColleges(String search) {
 		return collegeDAO.searchColleges(search, new Page());
 	}
-
-
+	@Override
+	public List<CollegesInfo> searchColleges(String search, Object... params) {
+		return collegeDAO.searchColleges(search, new Page(), params);
+	}
 }

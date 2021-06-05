@@ -14,12 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import bo.ICollegesBO;
+import bo.ICourseBO;
 import bo.impl.CollegesBO;
+import bo.impl.CourseBO;
 import model.CollegesInfo;
+import model.Course;
 
 @WebServlet(urlPatterns = {"/college-list"})
 public class ListCollegeController extends HttpServlet{
 	private ICollegesBO collegeBO = CollegesBO.getInstance();
+	private ICourseBO courseBO = CourseBO.getInstance();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Gson gson = new Gson();
@@ -29,14 +34,36 @@ public class ListCollegeController extends HttpServlet{
 	    resp.setContentType("text/html; charset=UTF-8");
 	    
 	    String action = req.getParameter("search-method");
-
-	    if(action.equals("ajax")) {
-	    	String strSearch = req.getParameter("text");
-			List<CollegesInfo> list = collegeBO.searchColleges(strSearch);
 	    
+	    if(action.equals("ajax")) {
+	    	String search = req.getParameter("text");
+			List<CollegesInfo> list = collegeBO.searchColleges(search);
+	    	req.setAttribute("search", search);
+	    	
 			PrintWriter writer = resp.getWriter();
-			System.out.println(gson.toJson(list).toString());
 			writer.append(gson.toJson(list).toString());
+	    }else if(action.equals("normal")) {
+	    	String search = req.getParameter("search");
+	    	String province = req.getParameter("province");
+	    	String course = req.getParameter("course");
+	    	String type = req.getParameter("type") == null ? "" : req.getParameter("type");
+	    		    	
+	    	req.setAttribute("search", search);
+	    	req.setAttribute("province", province);
+	    	req.setAttribute("course", course);
+	    	req.setAttribute("type", type);
+	    	
+	    	List<CollegesInfo> colleges = collegeBO.searchColleges(search, province, course, type);
+	    	List<Course> courses = courseBO.getCourses();
+	    	
+	    	req.setAttribute("colleges", colleges);
+	    	req.setAttribute("courses", courses);
+	    	
+	    	req.getRequestDispatcher("view/jsp/page/FilterUI.jsp").forward(req, resp);;
+	    }else if(action.equals("normal-3p")){
+	    	
+	    }else {
+	    	resp.sendRedirect("/home");
 	    }
 	}
 }
