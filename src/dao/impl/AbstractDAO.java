@@ -71,15 +71,17 @@ public abstract class AbstractDAO<T> implements IGenericDAO<T>{
 		try {
 			for(int i=0;i<params.length;i++) {
 				if(params[i] instanceof String) {
-					st.setString(i, params[i].toString());
+					st.setNString(i+1, "%"+params[i].toString()+"%");
 				}else if(params[i] instanceof Integer) {
-					st.setInt(i, (Integer) params[i]);
+					st.setInt(i+1, (Integer) params[i]);
 				}else if(params[i] instanceof Date) {
-					st.setDate(i, (Date) params[i]);
+					st.setDate(i+1, (Date) params[i]);
 				}else if(params[i] instanceof Boolean) {
-					st.setBoolean(i, (Boolean) params[i]);
+					st.setBoolean(i+1, (Boolean) params[i]);
+				}else if(params[i] instanceof Long){
+					st.setLong(i+1, (Long) params[i]);
 				}else {
-					st.setLong(i, (Long) params[i]);
+					st.setString(i+1, null);
 				}
 			}			
 		}catch(SQLException e) {

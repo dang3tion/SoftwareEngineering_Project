@@ -1,5 +1,10 @@
 package setup;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import connection.SinglePool;
+
 public class Config {
 	public static int DB_MAX_CONNECTIONS = 100;
 	public static String SERVER_NAME = "jdbc:sqlserver://localhost:1433";

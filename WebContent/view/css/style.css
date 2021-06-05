@@ -3087,3 +3087,9 @@ figure figcaption {
 .edit-frame .edit-info:hover{
 	background: #0af;
 }
+
+.link-normal, .link-normal:hover{
+	text-decoration: none;
+	color: white;
+}
+

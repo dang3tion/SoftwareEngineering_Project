@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bo.ICollegesBO;
 import bo.ICourseBO;
+import bo.impl.CollegesBO;
 import bo.impl.CourseBO;
 
 @WebServlet(urlPatterns = {"/home"})
@@ -22,7 +24,7 @@ public class HomeController extends HttpServlet{
 	    resp.setCharacterEncoding("UTF-8");
 	    resp.setContentType("text/html; charset=UTF-8");
 		
-	    req.setAttribute("courses", courseBO.getCourses());
+	    req.setAttribute("courses", courseBO.getCourses());;
 		req.getRequestDispatcher("view/indexUI.jsp").forward(req, resp);
 	}
 }

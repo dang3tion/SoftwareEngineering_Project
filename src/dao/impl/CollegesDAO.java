@@ -47,26 +47,19 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 
 	@Override
 	public List<CollegesInfo> searchColleges(String search, Page page, Object... params) {
-		String sql = "SELECT * FROM TRUONGHOC th JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG WHERE th.TENTRUONG LIKE '%"+search+"%'";
+		String sql = "SELECT * FROM TRUONGHOC th ";
+		sql += "JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG ";
+		sql += "JOIN KHUNGDT_TRUONG kt ON th.ID_TRUONG = kt.ID_TRUONG ";
+		sql += "JOIN NGANH_TOHOP nt ON nt.ID_KDT = kt.ID_KDT ";
+		sql += "JOIN NGANH n ON n.ID_NGANH = nt.ID_NGANH ";
+		sql += "WHERE th.TENTRUONG LIKE '%"+search+"%' ";
 		// filter condition
+		if(params.length > 0) {
+			sql += "AND dc.TINH LIKE ? AND n.TEN_NGANH LIKE ? AND th.LOAITRUONG LIKE ?";
+		}
 		//
 		sql+=" ORDER BY @@CURSOR_ROWS OFFSET "+page.getOffset()+" ROWS FETCH NEXT "+page.getMaxPageItem()+" ROWS ONLY";
-		return query(sql, new CollegesMapper(), null);
-	}
-
-	public List<String> getAllProvince(){
-		List<String> result = new ArrayList<String>();
-		String sql = "SELECT TINH FROM DIACHI GROUP BY TINH HAVING COUNT(TINH) > 0";
-		try {
-			PreparedStatement pt = SinglePool.getConnection().prepareStatement(sql);
-			ResultSet rs = pt.executeQuery();
-			while(rs.next()) {
-				result.add(rs.getNString(1));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
+		return query(sql, new CollegesMapper(), params);
 	}
 
 }
