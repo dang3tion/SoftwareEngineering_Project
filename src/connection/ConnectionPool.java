@@ -9,7 +9,7 @@ import java.util.Queue;
 import setup.Config;
 
 public class ConnectionPool {
-	// danh sách các single connection ĐANG TRỐNG trong một connection Pool
+	// danh sÃ¡ch cÃ¡c single connection Ä�ANG TRá»�NG trong má»™t connection Pool
 	private Queue<Connection> availableConnections = new LinkedList<Connection>();
 
 	public ConnectionPool() {
@@ -26,13 +26,13 @@ public class ConnectionPool {
 		return true;
 	}
 
-	// Tạo mới 1 single connection
+	// Táº¡o má»›i 1 single connection
 	private Connection createConnection() {
 		String URL = Config.SERVER_NAME + ";databaseName=" + Config.DATABASE_NAME;
 		Connection connection = null;
 		try {
 			Class.forName(Config.DBDRIVER);
-			connection = DriverManager.getConnection(URL, Config.USERNAME_DB, Config.PASSWORD_DB);
+			connection = DriverManager.getConnection(URL);
 			return connection;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class ConnectionPool {
 		return null;
 	}
 
-	// Thực hiện câu truy vấn SQL bằng connection này ( lấy ra từ list connection )
+	// Thá»±c hiá»‡n cÃ¢u truy váº¥n SQL báº±ng connection nÃ y ( láº¥y ra tá»« list connection )
 	public synchronized Connection getConnection() {
 		Connection connection = null;
 		if (availableConnections.size() > 0) {
@@ -51,7 +51,7 @@ public class ConnectionPool {
 		return connection;
 	}
 
-	// Hoàn trả single Connection về Pool sau khi sử dụng xong ( list avail tăng lên
+	// HoÃ n tráº£ single Connection vá»� Pool sau khi sá»­ dá»¥ng xong ( list avail tÄƒng lÃªn
 	// 1 ).
 	public synchronized void returnConnection(Connection connection) {
 		if (connection != null) {

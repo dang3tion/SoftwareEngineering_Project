@@ -4,8 +4,11 @@ import java.util.List;
 
 public class CollegesInfo {
 	private int id;
+	
 	private String name;
+	private String idColleges;
 	private String type;
+
 	private String trainingSystem;
 	private List<String> address;
 	private List<String> phoneNumber;
@@ -13,6 +16,30 @@ public class CollegesInfo {
 	private String email;
 	private String introduce;
 	private String admissionDetail;
+	private List<TrainingFrame> listFrame;
+	private List<AddressDetail> listAdress;
+	private List<PhoneDetail> listPhone;
+	public CollegesInfo(int id, String name, String type, String trainingSystem, List<String> address,
+			List<String> phoneNumber, String website, String email, String introduce, String admissionDetail,
+			List<TrainingFrame> listFrame, List<AddressDetail> listAdress, List<PhoneDetail> listPhone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.trainingSystem = trainingSystem;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.website = website;
+		this.email = email;
+		this.introduce = introduce;
+		this.admissionDetail = admissionDetail;
+		this.listFrame = listFrame;
+		this.listAdress = listAdress;
+		this.listPhone = listPhone;
+	}
+	public CollegesInfo() {
+		super();
+	}
 	public int getId() {
 		return id;
 	}
@@ -73,5 +100,30 @@ public class CollegesInfo {
 	public void setAdmissionDetail(String admissionDetail) {
 		this.admissionDetail = admissionDetail;
 	}
-	
+	public List<TrainingFrame> getListFrame() {
+		return listFrame;
+	}
+	public void setListFrame(List<TrainingFrame> listFrame) {
+		this.listFrame = listFrame;
+	}
+	public List<AddressDetail> getListAdress() {
+		return listAdress;
+	}
+	public void setListAdress(List<AddressDetail> listAdress) {
+		this.listAdress = listAdress;
+	}
+	public List<PhoneDetail> getListPhone() {
+		return listPhone;
+	}
+	public void setListPhone(List<PhoneDetail> listPhone) {
+		this.listPhone = listPhone;
+	}
+	@Override
+	public String toString() {
+		return "CollegesInfo [id=" + id + ", name=" + name + ", type=" + type + ", trainingSystem=" + trainingSystem
+				+ ", address=" + address + ", phoneNumber=" + phoneNumber + ", website=" + website + ", email=" + email
+				+ ", introduce=" + introduce + ", admissionDetail=" + admissionDetail + ", listFrame=" + listFrame
+				+ ", listAdress=" + listAdress + ", listPhone=" + listPhone + "]";
+	}
+
 }

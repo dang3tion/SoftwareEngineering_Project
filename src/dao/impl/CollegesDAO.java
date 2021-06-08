@@ -13,13 +13,15 @@ import mapper.CollegesMapper;
 import model.CollegesInfo;
 import page.Page;
 
-public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesDAO{
+public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesDAO {
 	private static CollegesDAO instance = new CollegesDAO();
+
 	public static CollegesDAO getInstance() {
 		return instance;
 	}
-	private CollegesDAO() {}
 
+	private CollegesDAO() {
+	}
 
 	@Override
 	public int doInsert(CollegesInfo t, Object... params) {
@@ -52,14 +54,18 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 		sql += "JOIN KHUNGDT_TRUONG kt ON th.ID_TRUONG = kt.ID_TRUONG ";
 		sql += "JOIN NGANH_TOHOP nt ON nt.ID_KDT = kt.ID_KDT ";
 		sql += "JOIN NGANH n ON n.ID_NGANH = nt.ID_NGANH ";
-		sql += "WHERE th.TENTRUONG LIKE '%"+search+"%' ";
+		sql += "WHERE th.TENTRUONG LIKE '%" + search + "%' ";
 		// filter condition
-		if(params.length > 0) {
+		if (params.length > 0) {
 			sql += "AND dc.TINH LIKE ? AND n.TEN_NGANH LIKE ? AND th.LOAITRUONG LIKE ?";
 		}
 		//
-		sql+=" ORDER BY @@CURSOR_ROWS OFFSET "+page.getOffset()+" ROWS FETCH NEXT "+page.getMaxPageItem()+" ROWS ONLY";
+		sql += " ORDER BY @@CURSOR_ROWS OFFSET " + page.getOffset() + " ROWS FETCH NEXT " + page.getMaxPageItem()
+				+ " ROWS ONLY";
 		return query(sql, new CollegesMapper(), params);
 	}
 
+	public static void main(String[] args) {
+		System.out.println(CollegesDAO.getInstance().searchColleges("", new Page()));
+	}
 }

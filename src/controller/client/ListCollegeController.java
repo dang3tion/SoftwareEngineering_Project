@@ -2,7 +2,6 @@ package controller.client;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,8 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
 
 import bo.ICollegesBO;
 import bo.ICourseBO;
@@ -27,7 +24,7 @@ public class ListCollegeController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Gson gson = new Gson();
+//		Gson gson = new Gson();
 		
 		req.setCharacterEncoding("UTF-8");
 	    resp.setCharacterEncoding("UTF-8");
@@ -41,7 +38,7 @@ public class ListCollegeController extends HttpServlet{
 	    	req.setAttribute("search", search);
 	    	
 			PrintWriter writer = resp.getWriter();
-			writer.append(gson.toJson(list).toString());
+//			writer.append(gson.toJson(list).toString());
 	    }else if(action.equals("normal")) {
 	    	String search = req.getParameter("search");
 	    	String province = req.getParameter("province");

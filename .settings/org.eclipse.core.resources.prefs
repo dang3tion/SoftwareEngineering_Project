@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
 encoding//WebContent/view/indexUI.jsp=UTF-8
+encoding//src/connection/ConnectionPool.java=UTF-8
 encoding//src/controller/client/HomeController.java=UTF-8
 encoding//src/controller/client/ListCollegeController.java=UTF-8
-encoding/<project>=UTF-8
