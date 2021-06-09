@@ -1,8 +1,6 @@
 package model;
 
-import java.sql.Date;
 import java.util.List;
-import java.util.Map;
 
 public class TrainingFrame {
 	private String typeFrame;
@@ -12,7 +10,8 @@ public class TrainingFrame {
 	private double value_tuition;
 	private String descriTuition;
 	private List<Course> listCourse;
-
+	private String id;
+	private String state;
 	public TrainingFrame(String typeFrame, String updateTime, String description, String tuition, double value_tuition,
 			String descriTuition, List<Course> listCourse) {
 		super();
@@ -23,6 +22,22 @@ public class TrainingFrame {
 		this.value_tuition = value_tuition;
 		this.descriTuition = descriTuition;
 		this.listCourse = listCourse;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public TrainingFrame() {

@@ -46,6 +46,7 @@ public class ConnectionPool {
 	// connection )
 	public synchronized Connection getConnection() {
 		Connection connection = null;
+		System.out.println(availableConnections.size());
 		if (availableConnections.size() > 0) {
 			connection = availableConnections.poll();
 		}

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import bo.impl.CollegesBO;
 import bo.impl.CourseBO;
+import bo.impl.FrameBO;
 import model.Course;
+import model.TrainingFrame;
 
 @WebServlet("/admin/additional")
 public class ManagerController extends HttpServlet {
@@ -22,7 +24,8 @@ public class ManagerController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		List<Course> lstCourse = CourseBO.getInstance().getCourses();
-		System.out.println(lstCourse);
+		List<TrainingFrame> lstFrame = FrameBO.getInstance().getListFrame();
+		request.setAttribute("lstFrame", lstFrame);
 		request.setAttribute("lstCourse", lstCourse);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/view/jsp/page/AdditionalUI.jsp");
@@ -32,7 +35,9 @@ public class ManagerController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		if (request.getParameter("id") != null) {
+
 			System.out.println(request.getParameter("id"));
 			boolean isExists = CollegesBO.getInstance().isIdExists(request.getParameter("id"));
 
@@ -41,11 +46,16 @@ public class ManagerController extends HttpServlet {
 			response.getOutputStream().close();
 		} else {
 			if (request.getParameter("confirm-add") != null) {
-				System.out.println("is confirm");
-				CollegesBO.getInstance().createNewObject(request);
-
+				boolean success = CollegesBO.getInstance().createNewObject(request);
+				if (success) {
+					RequestDispatcher dispatcher //
+							= this.getServletContext().getRequestDispatcher("/view/jsp/page/AdminUI.jsp");
+					dispatcher.forward(request, response);
+				} else {
+					request.setAttribute("msg", "Thêm thông tin không thành công");
+					doGet(request, response);
+				}
 			}
-			doGet(request, response);
 		}
 	}
 

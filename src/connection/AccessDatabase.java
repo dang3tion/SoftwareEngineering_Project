@@ -33,6 +33,9 @@ public class AccessDatabase {
 				if (object instanceof Integer) {
 					stmt.setInt(i + 1, (Integer) object);
 				}
+				if (object instanceof Double) {
+					stmt.setDouble(i + 1, (Double) object);
+				}
 				i++;
 
 			}

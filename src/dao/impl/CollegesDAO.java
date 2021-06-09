@@ -81,11 +81,54 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 
 		return false;
 	}
-	public boolean insertColleges(CollegesInfo c) {
-		
+
+	public int getIdColleges(String idColleges) {
+		AccessDatabase ac = AccessDatabase.getInstance();
+		String query = "SELECT ID_TRUONG FROM TRUONGHOC WHERE MATRUONG=?";
+		try (ResultSet rs = ac.executeQuery(query, idColleges)) {
+			if (rs.next()) {
+				return Integer.parseInt(rs.getString("ID_TRUONG"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+
 	}
+
+	public boolean insertColleges(CollegesInfo c) {
+		AccessDatabase ac = AccessDatabase.getInstance();
+		String query = "INSERT INTO TRUONGHOC VALUES(?,?,?,?,?,?,?,'1')";
+		try (ResultSet rs = ac.executeQuery(query, c.getIdColleges(), c.getState(), c.getName(), c.getType(),
+				c.getWebsite(), c.getIntroduce(), c.getAdmissionDetail())) {
+			// address
+			int id = getIdColleges(c.getIdColleges());
+			System.out.println("idturong" + id);
+			for (int i = 0; i < c.getListAdress().size(); i++) {
+				AddressDAO.getInstance().insertAddress(c.getListAdress().get(i), id + "");
+			}
+			// phone
+			for (int i = 0; i < c.getListPhone().size(); i++) {
+				PhoneDetailDAO.getInstance().insertPhone(c.getListPhone().get(i), id + "");
+			}
+			// img
+			for (int i = 0; i < c.getLstImg().size(); i++) {
+				ImageDAO.getInstance().insertImage(c.getLstImg().get(i), id + "");
+			}
+
+			// frame
+			for (int i = 0; i < c.getListFrame().size(); i++) {
+				FrameDAO.getInstance().insertFrame(c.getListFrame().get(i), id + "");
+			}
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
 	public static void main(String[] args) {
-		System.out.println(CollegesDAO.getInstance().isIdExists("NLS"));
 	}
 
 }

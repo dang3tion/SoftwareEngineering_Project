@@ -35,7 +35,7 @@ public abstract class AbstractDAO<T> implements IGenericDAO<T> {
 			while (rs.next()) {
 				list.add(rowMapper.mapper(rs));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

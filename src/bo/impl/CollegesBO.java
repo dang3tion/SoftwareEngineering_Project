@@ -95,6 +95,8 @@ public class CollegesBO implements ICollegesBO {
 			String hocphi = request.getParameterValues("hocphi")[i].trim();
 			String giatri = request.getParameterValues("giatri-hocphi")[i].trim();
 			String mota_hocphi = request.getParameterValues("mota-hocphi")[i].trim();
+			String trangthai = request.getParameterValues("trangthai-khung")[i].trim();
+
 			List<Course> lstCourse = createListCourse(request, i + 1);
 			frame.setUpdateTime(nam[i]);
 			frame.setTypeFrame(loaikhung);
@@ -103,6 +105,7 @@ public class CollegesBO implements ICollegesBO {
 			frame.setValue_tuition(Double.parseDouble(giatri));
 			frame.setDescriTuition(mota_hocphi);
 			frame.setListCourse(lstCourse);
+			frame.setState(trangthai);
 			lstFrame.add(frame);
 		}
 		return lstFrame;
@@ -124,6 +127,7 @@ public class CollegesBO implements ICollegesBO {
 			course.setDesciption(mota);
 			course.setRecruimentCombination(new ArrayList<String>(Arrays.asList(tohop.split(","))));
 			lstCourse.add(course);
+		
 		}
 		return lstCourse;
 	}
@@ -144,12 +148,7 @@ public class CollegesBO implements ICollegesBO {
 		c.setListFrame(createListFrame(request));
 		c.setLstImg(createListImage(request));
 		c.setListPhone(createPhoneDetail(request));
-		System.out.println(c);
 
-		return false;
-
+		return CollegesDAO.getInstance().insertColleges(c);
 	}
-	
-	
-	
 }

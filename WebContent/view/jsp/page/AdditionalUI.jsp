@@ -45,15 +45,12 @@
 
 
 								<div id="validate-msg">
-									<p style="font-style: italic; color: #2196f3;">
-										<i class="fas fa-check-circle"></i> Thêm thông tin thành công
-									</p>
+									<c:if test="${msg not empty }">
 
-									<p style="font-style: italic; color: #ff5722;">
-										<i class="fas fa-exclamation-circle"></i> Thêm thông tin không
-										thành công
-									</p>
-
+										<p style="font-style: italic; color: #ff5722;">
+											<i class="fas fa-exclamation-circle"></i> ${msg }
+										</p>
+									</c:if>
 
 
 								</div>
@@ -450,11 +447,9 @@
 										</div>
 										<div class="input">
 											<select name="loai-khung">
-												<option value="chinhquy">Đại học chính quy</option>
-												<option value="caodang">Cao đẳng</option>
-												<option value="tientien">Chất lượng tiên tiến</option>
-												<option value="chatluongcao">Chất lượng cao</option>
-												<option value="lienketquocte">Liên kết quốc tế</option>
+												<c:forEach items="${lstFrame }" var="frame">
+													<option value="${frame.id }">${frame.typeFrame }</option>
+												</c:forEach>
 											</select>
 										</div>
 
@@ -508,7 +503,8 @@
 
 										<div class="input">
 											<input name="giatri-hocphi"
-												placeHolder="Nhập giá trị tương đương" type="number" value="">
+												placeHolder="Nhập giá trị tương đương" type="number"
+												value="" step=0.01>
 
 
 
@@ -559,7 +555,7 @@
 											<td>
 												<div class="input">
 													<input name="diem-nganh1" placeHolder="Nhập điểm"
-														type="number" value="">
+														type="number" value="" step=0.01>
 												</div>
 											</td>
 
@@ -604,7 +600,7 @@
 					</div>
 					<div id="frame-add"></div>
 					<div>
-						
+
 						<button type="button" class="btn-primary" data-toggle="modal"
 							data-target="#add-color-btn"
 							style="background: #FFC107; margin-right: 30px; float: right; box-shadow: 1px 1px 2px 0px #a5a5a5; padding: 10px; border-radius: 3px; outline: 0; border: 0;">Thêm
@@ -641,8 +637,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-primary" name="confirm-add"
-									value="Đồng ý">
-								</button>
+									value="">Đồng ý</button>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Hủy</button>
 							</div>
@@ -788,7 +783,6 @@
 			if (c.value === null || c.value === "") {	
 				sendMsgValidate('Vui lòng nhập thông tin đầy đủ các trường nhập liệu',false);
 				c.style.border = "1px solid #ff5757";
-				alert(c.name);
 				return false;
 			} else {
 				c.style.border = "   1px solid rgb(158, 158, 158)";
