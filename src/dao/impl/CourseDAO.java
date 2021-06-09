@@ -6,12 +6,15 @@ import dao.ICourseDAO;
 import mapper.CourseMapper;
 import model.Course;
 
-public class CourseDAO extends AbstractDAO<Course> implements ICourseDAO{
+public class CourseDAO extends AbstractDAO<Course> implements ICourseDAO {
 	private static CourseDAO instance = new CourseDAO();
+
 	public static CourseDAO getInstance() {
 		return instance;
 	}
-	private CourseDAO() {}
+
+	private CourseDAO() {
+	}
 
 	@Override
 	public int doInsert(Course t, Object... params) {
@@ -43,4 +46,7 @@ public class CourseDAO extends AbstractDAO<Course> implements ICourseDAO{
 		return query(sql, new CourseMapper());
 	}
 
+	public static void main(String[] args) {
+		System.out.println(CourseDAO.getInstance().getCourses());
+	}
 }

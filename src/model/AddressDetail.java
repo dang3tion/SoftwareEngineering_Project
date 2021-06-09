@@ -16,6 +16,10 @@ public class AddressDetail {
 		this.state = state;
 	}
 
+	public AddressDetail() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getTitle() {
 		return title;
 	}

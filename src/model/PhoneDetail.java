@@ -12,6 +12,10 @@ public class PhoneDetail {
 		this.state = state;
 	}
 
+	public PhoneDetail() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getTitle() {
 		return title;
 	}

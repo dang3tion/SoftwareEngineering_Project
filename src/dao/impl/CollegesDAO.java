@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import connection.AccessDatabase;
 import connection.SinglePool;
 import dao.ICollegesDAO;
 import mapper.CollegesMapper;
@@ -65,7 +66,26 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 		return query(sql, new CollegesMapper(), params);
 	}
 
-	public static void main(String[] args) {
-		System.out.println(CollegesDAO.getInstance().searchColleges("", new Page()));
+	@Override
+	public boolean isIdExists(String id) {
+		AccessDatabase ac = AccessDatabase.getInstance();
+		String query = "SELECT * FROM TRUONGHOC WHERE MATRUONG=?";
+		try (ResultSet rs = ac.executeQuery(query, id)) {
+			if (!rs.isBeforeFirst()) {
+				return false;
+			}
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
+	public boolean insertColleges(CollegesInfo c) {
+		
+	}
+	public static void main(String[] args) {
+		System.out.println(CollegesDAO.getInstance().isIdExists("NLS"));
+	}
+
 }

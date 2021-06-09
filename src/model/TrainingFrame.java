@@ -1,42 +1,97 @@
 package model;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 
 public class TrainingFrame {
-	private int id;
 	private String typeFrame;
-	public int getId() {
-		return id;
+	private String updateTime;
+	private String description;
+	private String tuition;
+	private double value_tuition;
+	private String descriTuition;
+	private List<Course> listCourse;
+
+	public TrainingFrame(String typeFrame, String updateTime, String description, String tuition, double value_tuition,
+			String descriTuition, List<Course> listCourse) {
+		super();
+		this.typeFrame = typeFrame;
+		this.updateTime = updateTime;
+		this.description = description;
+		this.tuition = tuition;
+		this.value_tuition = value_tuition;
+		this.descriTuition = descriTuition;
+		this.listCourse = listCourse;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public TrainingFrame() {
+		super();
 	}
+
 	public String getTypeFrame() {
 		return typeFrame;
 	}
+
 	public void setTypeFrame(String typeFrame) {
 		this.typeFrame = typeFrame;
 	}
-	public Date getUpdateTime() {
+
+	public String getUpdateTime() {
 		return updateTime;
 	}
-	public void setUpdateTime(Date updateTime) {
+
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
-	public Map<String, Integer> getTuitionDetail() {
-		return tuitionDetail;
-	}
-	public void setTuitionDetail(Map<String, Integer> tuitionDetail) {
-		this.tuitionDetail = tuitionDetail;
-	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	private Date updateTime;
-	private Map<String, Integer> tuitionDetail;
-	private String description;
+
+	public String getTuition() {
+		return tuition;
+	}
+
+	public void setTuition(String tuition) {
+		this.tuition = tuition;
+	}
+
+	public double getValue_tuition() {
+		return value_tuition;
+	}
+
+	public void setValue_tuition(double value_tuition) {
+		this.value_tuition = value_tuition;
+	}
+
+	public String getDescriTuition() {
+		return descriTuition;
+	}
+
+	public void setDescriTuition(String descriTuition) {
+		this.descriTuition = descriTuition;
+	}
+
+	public List<Course> getListCourse() {
+		return listCourse;
+	}
+
+	public void setListCourse(List<Course> listCourse) {
+		this.listCourse = listCourse;
+	}
+
+	@Override
+	public String toString() {
+		return "TrainingFrame [typeFrame=" + typeFrame + ", updateTime=" + updateTime + ", description=" + description
+				+ ", tuition=" + tuition + ", value_tuition=" + value_tuition + ", descriTuition=" + descriTuition
+				+ ", listCourse=" + listCourse + "]";
+	}
+
+	
+
 }

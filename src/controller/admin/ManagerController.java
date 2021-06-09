@@ -1,0 +1,52 @@
+package controller.admin;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import bo.impl.CollegesBO;
+import bo.impl.CourseBO;
+import model.Course;
+
+@WebServlet("/admin/additional")
+public class ManagerController extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		List<Course> lstCourse = CourseBO.getInstance().getCourses();
+		System.out.println(lstCourse);
+		request.setAttribute("lstCourse", lstCourse);
+		RequestDispatcher dispatcher //
+				= this.getServletContext().getRequestDispatcher("/view/jsp/page/AdditionalUI.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (request.getParameter("id") != null) {
+			System.out.println(request.getParameter("id"));
+			boolean isExists = CollegesBO.getInstance().isIdExists(request.getParameter("id"));
+
+			response.getOutputStream().print(isExists);
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+		} else {
+			if (request.getParameter("confirm-add") != null) {
+				System.out.println("is confirm");
+				CollegesBO.getInstance().createNewObject(request);
+
+			}
+			doGet(request, response);
+		}
+	}
+
+}

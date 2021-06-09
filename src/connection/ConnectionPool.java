@@ -10,7 +10,7 @@ import setup.Config;
 
 public class ConnectionPool {
 	// danh sÃ¡ch cÃ¡c single connection Ä�ANG TRá»�NG trong má»™t connection Pool
-	private Queue<Connection> availableConnections = new LinkedList<Connection>();
+	private static Queue<Connection> availableConnections = new LinkedList<Connection>();
 
 	public ConnectionPool() {
 		while (!isMaxPool()) {
@@ -32,7 +32,7 @@ public class ConnectionPool {
 		Connection connection = null;
 		try {
 			Class.forName(Config.DBDRIVER);
-			connection = DriverManager.getConnection(URL);
+			connection = DriverManager.getConnection(URL, Config.USERNAME_DB, Config.PASSWORD_DB);
 			return connection;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -42,16 +42,18 @@ public class ConnectionPool {
 		return null;
 	}
 
-	// Thá»±c hiá»‡n cÃ¢u truy váº¥n SQL báº±ng connection nÃ y ( láº¥y ra tá»« list connection )
+	// Thá»±c hiá»‡n cÃ¢u truy váº¥n SQL báº±ng connection nÃ y ( láº¥y ra tá»« list
+	// connection )
 	public synchronized Connection getConnection() {
 		Connection connection = null;
 		if (availableConnections.size() > 0) {
-			connection = availableConnections.remove();		
+			connection = availableConnections.poll();
 		}
 		return connection;
 	}
 
-	// HoÃ n tráº£ single Connection vá»� Pool sau khi sá»­ dá»¥ng xong ( list avail tÄƒng lÃªn
+	// HoÃ n tráº£ single Connection vá»� Pool sau khi sá»­ dá»¥ng xong ( list avail
+	// tÄƒng lÃªn
 	// 1 ).
 	public synchronized void returnConnection(Connection connection) {
 		if (connection != null) {
