@@ -71,6 +71,10 @@
 									href="${pageContext.request.contextPath}/admin/additional">
 										<span class="border-left pl-xl-4">Thêm thông tin</span>
 								</a></li>
+								<li class="hover-regis"><a class="" href="${pageContext.request.contextPath}/admin" class="cta">
+										<span class="bg-primary text-white rounded p-2"> Đăng
+											xuất </span>
+								</a></li>
 							</c:when>
 							<c:otherwise>
 								<li class="ml-xl-3 login hover-menu"><a
@@ -79,7 +83,7 @@
 								</a></li>
 								<li class="hover-regis"><a class="" href="#" class="cta">
 										<span class="bg-primary text-white rounded p-2"> Đăng
-											xuất </span>
+											ký </span>
 								</a></li>
 							</c:otherwise>
 
