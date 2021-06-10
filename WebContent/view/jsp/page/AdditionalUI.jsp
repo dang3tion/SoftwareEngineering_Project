@@ -45,7 +45,7 @@
 
 
 								<div id="validate-msg">
-									<c:if test="${msg not empty }">
+									<c:if test="${ not empty msg}">
 
 										<p style="font-style: italic; color: #ff5722;">
 											<i class="fas fa-exclamation-circle"></i> ${msg }
