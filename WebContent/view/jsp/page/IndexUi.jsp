@@ -76,10 +76,10 @@
 						data-aos-delay={300}>
 						<div class="col-12">
 							<h2 class="d-inline-block">Bạn muốn tìm:</h2>
-							<a href="/searching/detail">University of Cambridge</a> <a
-								href="/searching/detail">Nong Lam University</a> <a
-								href="/searching/detail">Harvard University</a> <a
-								href="/searching/detail">University of Oxford</a>
+							<a href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp">University of Cambridge</a> <a
+								href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp">Nong Lam University</a> <a
+								href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp">Harvard University</a> <a
+								href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp">University of Oxford</a>
 						</div>
 					</div>
 				</div>
@@ -97,14 +97,14 @@
 			<div class="row mt-5">
 				<div class="col-lg-6">
 					<div class="d-block d-md-flex listing hoverd">
-						<a href="/searching/detail" class="img d-block"
+						<a href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp" class="img d-block"
 							style="background-image: url( '${url}/images/college/cb2.jpg')"></a>
 						<div class="lh-content">
 							<span class="category">Public University</span> <a href="#"
 								class="bookmark"> <span class="icon-heart"></span>
 							</a>
 							<h3>
-								<a class="hovera" href="/searching/detail"> University of
+								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp"> University of
 									Cambridge </a>
 							</h3>
 							<address>Cambridge CB2 1TN, United Kingdom <br/>(Europe)</address>
@@ -119,14 +119,14 @@
 						</div>
 					</div>
 					<div class="d-block d-md-flex listing hoverd">
-						<a href="/searching/detail" class="img d-block"
+						<a href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp" class="img d-block"
 							style="background-image: url(  '${url}/images/college/hv.jpg') "></a>
 						<div class="lh-content">
 							<span class="category">Public University</span> <a href="#"
 								class="bookmark"> <span class="icon-heart"></span>
 							</a>
 							<h3>
-								<a class="hovera" href="/searching/detail"> Harvard
+								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp"> Harvard
 									University </a>
 							</h3>
 							<address>
@@ -143,14 +143,14 @@
 						</div>
 					</div>
 					<div class="d-block d-md-flex listing hoverd">
-						<a href="/searching/detail" class="img d-block"
+						<a href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp" class="img d-block"
 							style=" background-image:url('${url}/images/college/sf.jpg ')"></a>
 						<div class="lh-content">
 							<span class="category">Public University</span> <a href="#"
 								class="bookmark"> <span class="icon-heart"></span>
 							</a>
 							<h3>
-								<a class="hovera" href="/searching/detail"> Stanford
+								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp"> Stanford
 									University </a>
 							</h3>
 							<address>
@@ -170,14 +170,14 @@
 				</div>
 				<div class="col-lg-6">
 					<div class="d-block d-md-flex listing hoverd">
-						<a href="/searching/detail" class="img d-block"
+						<a href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp" class="img d-block"
 							style="background-image: url('${url}/images/college/cb2.jpg')"></a>
 						<div class="lh-content">
 							<span class="category">Public University</span> <a href="#"
 								class="bookmark"> <span class="icon-heart"></span>
 							</a>
 							<h3>
-								<a class="hovera" href="/searching/detail"> University of
+								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp"> University of
 									Cambridge </a>
 							</h3>
 							<address>Cambridge CB2 1TN, United Kingdom <br/>(Europe)</address>
@@ -192,14 +192,14 @@
 						</div>
 					</div>
 					<div class="d-block d-md-flex listing hoverd">
-						<a href="/searching/detail" class="img d-block"
+						<a href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp" class="img d-block"
 							style="background-image: url(  '${url}/images/college/hv.jpg') "></a>
 						<div class="lh-content">
 							<span class="category">Public University</span> <a href="#"
 								class="bookmark"> <span class="icon-heart"></span>
 							</a>
 							<h3>
-								<a class="hovera" href="/searching/detail"> Harvard
+								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp"> Harvard
 									University </a>
 							</h3>
 							<address>
@@ -216,14 +216,14 @@
 						</div>
 					</div>
 					<div class="d-block d-md-flex listing hoverd">
-						<a href="/searching/detail" class="img d-block"
+						<a href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp" class="img d-block"
 							style=" background-image:url('${url}images/college/sf.jpg ')"></a>
 						<div class="lh-content">
 							<span class="category">Public University</span> <a href="#"
 								class="bookmark"> <span class="icon-heart"></span>
 							</a>
 							<h3>
-								<a class="hovera" href="/searching/detail"> Stanford
+								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/DetailInforUI.jsp"> Stanford
 									University </a>
 							</h3>
 							<address>

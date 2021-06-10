@@ -3,17 +3,36 @@ package model;
 import java.util.List;
 
 public class Course {
-	private int id;
+	private String id;
 	private String name;
 	private double grade;
 	private List<String> recruimentCombination; 
 	private int recruimentQuantity;
-	private String groupCourse;
-	public int getId() {
+	private String desciption;
+	
+	public Course(String name, double grade, List<String> recruimentCombination, int recruimentQuantity,
+			String desciption) {
+		super();
+		this.name = name;
+		this.grade = grade;
+		this.recruimentCombination = recruimentCombination;
+		this.recruimentQuantity = recruimentQuantity;
+		this.desciption = desciption;
+	}
+	public Course() {
+		super();
+	}
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
+	}
+	public String getDesciption() {
+		return desciption;
+	}
+	public void setDesciption(String desciption) {
+		this.desciption = desciption;
 	}
 	public String getName() {
 		return name;
@@ -39,10 +58,10 @@ public class Course {
 	public void setRecruimentQuantity(int recruimentQuantity) {
 		this.recruimentQuantity = recruimentQuantity;
 	}
-	public String getGroupCourse() {
-		return groupCourse;
+	@Override
+	public String toString() {
+		return "Course [name=" + name + ", grade=" + grade + ", recruimentCombination=" + recruimentCombination
+				+ ", recruimentQuantity=" + recruimentQuantity + ", desciption=" + desciption + "]";
 	}
-	public void setGroupCourse(String groupCourse) {
-		this.groupCourse = groupCourse;
-	}
+	
 }

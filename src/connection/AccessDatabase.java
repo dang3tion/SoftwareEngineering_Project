@@ -6,6 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccessDatabase {
+	public static AccessDatabase c = new AccessDatabase();
+
+	private AccessDatabase() {
+
+	}
+
+	public static AccessDatabase getInstance() {
+		if (c == null) {
+			c = new AccessDatabase();
+		}
+		return c;
+	}
+
 	public ResultSet executeQuery(String query, Object... parameters) {
 		ResultSet resultSet = null;
 		Connection con = null;
@@ -19,6 +32,9 @@ public class AccessDatabase {
 				}
 				if (object instanceof Integer) {
 					stmt.setInt(i + 1, (Integer) object);
+				}
+				if (object instanceof Double) {
+					stmt.setDouble(i + 1, (Double) object);
 				}
 				i++;
 
@@ -40,9 +56,10 @@ public class AccessDatabase {
 	}
 
 	/**
-	 * @implNote CHỈ DÙNG TRONG TRƯỜNG HỢP DANH SÁCH THAM SỐ ĐỀU LÀ STRING
-	 * @param query : câu truy vấn không chứa tham số (String)
-	 * @return : trả về 1 ResultSet, null đối với câu lệnh delete
+	 * @implNote CHá»ˆ DÃ™NG TRONG TRÆ¯á»œNG Há»¢P DANH SÃ�CH THAM Sá»� Ä�á»€U LÃ€
+	 *           STRING
+	 * @param query : cÃ¢u truy váº¥n khÃ´ng chá»©a tham sá»‘ (String)
+	 * @return : tráº£ vá»� 1 ResultSet, null Ä‘á»‘i vá»›i cÃ¢u lá»‡nh delete
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
@@ -57,7 +74,7 @@ public class AccessDatabase {
 			} else {
 				stmt.executeUpdate();
 			}
-
+			SinglePool.returnConnection(con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

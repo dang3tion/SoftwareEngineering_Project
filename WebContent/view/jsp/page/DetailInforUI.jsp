@@ -156,7 +156,7 @@
                                         <p>
                                             Literal: <i>Hinc lucem et pocula sacra</i>
                                         </p>
-                                        <p>Established: 1209</p>
+                                     
                                         <p class="text-nowrapp">
                                             Vice-Chancellor:
                                             <a href="https://en.wikipedia.org/wiki/Stephen_Toope" target="blank">
