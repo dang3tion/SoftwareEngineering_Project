@@ -21,6 +21,9 @@ public class ManagerController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Allow-Methods", "GET, OPTIONS, HEAD, PUT, POST");
+		response.addHeader("Access-Control-Allow-Credentials", "true");
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		List<Course> lstCourse = CourseBO.getInstance().getCourses();

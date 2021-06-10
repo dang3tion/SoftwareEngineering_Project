@@ -680,7 +680,7 @@
 	<jsp:include page="../component/footer.jsp"></jsp:include>
 	<script>
                     function onclickProvince(id, l) {
-                        $.getJSON("https://thongtindoanhnghiep.co/api/city/" + id +
+                        $.getJSON("https://cors-anywhere.herokuapp.com/https://thongtindoanhnghiep.co/api/city/" + id +
                             "/district",
                             function(data) {
                                 console.log(data);
@@ -696,7 +696,7 @@
 
                             });;
                     }
-                    $.getJSON("https://thongtindoanhnghiep.co/api/city/", function(data) {
+                    $.getJSON("https://cors-anywhere.herokuapp.com/https://thongtindoanhnghiep.co/api/city/", function(data) {
                         var se = document.getElementById('province1');
                         var arr = data['LtsItem'];
                         se.setAttribute('onchange', 'onclickProvince(this.value,1)');
