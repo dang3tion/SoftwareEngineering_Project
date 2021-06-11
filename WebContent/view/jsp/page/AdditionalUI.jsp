@@ -28,10 +28,9 @@
 				<div class="container-fluid">
 					<div class="frame-cog">
 						<h3>Thêm thông tin trường mới</h3>
-
 						<div class="save">
 							<a
-								href="${pageContext.request.contextPath}/admin/warehouse/manager-product"><button
+								href="${pageContext.request.contextPath}/admin"><button
 									type="button" style="float: left">
 									<i class="far fa-arrow-alt-circle-left"></i> Quay lại
 								</button></a>

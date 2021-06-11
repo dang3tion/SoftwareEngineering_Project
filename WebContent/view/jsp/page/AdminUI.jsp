@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <c:url var="url" scope="session" value="/view"></c:url>
 <html>
 <jsp:include page="../component/menu.jsp"></jsp:include>
@@ -23,6 +23,11 @@
 								trường thích hợp nhất</p>
 						</div>
 					</div>
+					<c:if test="${not empty msg }">
+						<script type="text/javascript">
+							alert('Thêm thông tin trường mới thành công');
+						</script>
+					</c:if>
 					<div class="form-search-wrap mb-3" data-aos="fade-up"
 						data-aos-delay={200}>
 						<form method="post">
@@ -105,8 +110,9 @@
 								class="bookmark"> <span class="icon-heart"></span>
 							</a>
 							<h3>
-								<a class="hovera" href="${pageContext.request.contextPath}/view/jsp/page/DetailUI.jsp"> University of
-									Cambridge </a>
+								<a class="hovera"
+									href="${pageContext.request.contextPath}/view/jsp/page/DetailUI.jsp">
+									University of Cambridge </a>
 							</h3>
 							<address>
 								Cambridge CB2 1TN, United Kingdom <br />(Europe)
@@ -144,7 +150,8 @@
 									Reviews)</span>
 							</p>
 							<div class="edit-frame">
-								<a href="${pageContext.request.contextPath}/view/jsp/page/AdditionalUI.jsp">
+								<a
+									href="${pageContext.request.contextPath}/view/jsp/page/AdditionalUI.jsp">
 									<button class="edit-info">Cập nhật thông tin</button>
 								</a>
 							</div>
