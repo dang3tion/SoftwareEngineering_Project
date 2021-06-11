@@ -15,20 +15,11 @@ public class AdminUI extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		HttpSession sess = request.getSession();
 		if (sess.getAttribute("token") != null) {
-			if (request.getSession().getAttribute("msg") != null) {
-				request.getSession().removeAttribute("msg");
-				request.setAttribute("msg", "true");
-				RequestDispatcher dispatcher = this.getServletContext()
-						.getRequestDispatcher("/view/jsp/page/AdminUI.jsp");
-				dispatcher.forward(request, response);
-			} else {
-				sess.removeAttribute("token");
-				response.sendRedirect(request.getContextPath());
-			}
-		} else {
+			sess.removeAttribute("token");
+			response.sendRedirect(request.getContextPath());
+		}else {
 			sess.setAttribute("token", "token");
 			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/view/jsp/page/AdminUI.jsp");
 			dispatcher.forward(request, response);
