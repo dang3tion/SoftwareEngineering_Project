@@ -51,9 +51,9 @@ public class ManagerController extends HttpServlet {
 			if (request.getParameter("confirm-add") != null) {
 				boolean success = CollegesBO.getInstance().createNewObject(request);
 				if (success) {
-					RequestDispatcher dispatcher //
-							= this.getServletContext().getRequestDispatcher("/view/jsp/page/AdminUI.jsp");
-					dispatcher.forward(request, response);
+					System.out.println(request.getContextPath());
+					request.getSession().setAttribute("msg", "Thêm thông tin trường mới thành công");
+					response.sendRedirect(request.getContextPath() + "/admin");
 				} else {
 					request.setAttribute("msg", "Thêm thông tin không thành công");
 					doGet(request, response);
