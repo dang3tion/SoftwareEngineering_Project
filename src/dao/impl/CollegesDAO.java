@@ -25,30 +25,6 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 	}
 
 	@Override
-	public int doInsert(CollegesInfo t, Object... params) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean doUpdate(CollegesInfo t, Object... params) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean doDelete(int id, Object... params) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public CollegesInfo doGet(int id, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<CollegesInfo> searchColleges(String search, Page page, Object... params) {
 		String sql = "SELECT * FROM TRUONGHOC th ";
 		sql += "JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG ";

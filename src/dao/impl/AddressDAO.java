@@ -1,13 +1,19 @@
 package dao.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import connection.AccessDatabase;
+import connection.SinglePool;
 import dao.IAddressDAO;
+import mapper.AddressMapper;
 import model.AddressDetail;
 
-public class AddressDAO implements IAddressDAO {
+public class AddressDAO extends AbstractDAO<AddressDetail> implements IAddressDAO{
 	private static AddressDAO ins = new AddressDAO();
 
 	public AddressDAO() {
@@ -35,4 +41,19 @@ public class AddressDAO implements IAddressDAO {
 		return false;
 	}
 
+	@Override
+	public List<String> getAllDistrict() {
+		List<String> addresses = new ArrayList<String>();
+		String sql = "SELECT DISTINCT(TINH) FROM DIACHI";
+		try {
+			Statement st = SinglePool.getConnection().createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) addresses.add(rs.getNString(1));
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return addresses;
+	}
 }

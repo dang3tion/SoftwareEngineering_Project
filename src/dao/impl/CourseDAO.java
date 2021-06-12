@@ -20,30 +20,6 @@ public class CourseDAO extends AbstractDAO<Course> implements ICourseDAO {
 	}
 
 	@Override
-	public int doInsert(Course t, Object... params) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean doUpdate(Course t, Object... params) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean doDelete(int id, Object... params) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Course doGet(int id, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Course> getCourses() {
 		String sql = "SELECT * FROM NGANH";
 		return query(sql, new CourseMapper());

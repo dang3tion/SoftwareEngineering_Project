@@ -15,14 +15,6 @@ import mapper.RowMapper;
 
 public abstract class AbstractDAO<T> implements IGenericDAO<T> {
 
-	public abstract int doInsert(T t, Object... params);
-
-	public abstract boolean doUpdate(T t, Object... params);
-
-	public abstract boolean doDelete(int id, Object... params);
-
-	public abstract T doGet(int id, Object... params);
-
 	@Override
 	public List<T> query(String sql, RowMapper<T> rowMapper, Object... params) {
 		// TODO Auto-generated method stub
@@ -35,7 +27,6 @@ public abstract class AbstractDAO<T> implements IGenericDAO<T> {
 			while (rs.next()) {
 				list.add(rowMapper.mapper(rs));
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -44,35 +35,6 @@ public abstract class AbstractDAO<T> implements IGenericDAO<T> {
 		return list;
 	}
 
-	@Override
-	public boolean update(String sql, Object... params) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public int insert(String sql, Object... params) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean delete(String sql, Object... params) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public int count(String sql, Object... params) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public T get(String sql, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void setParams(PreparedStatement st, Object... params) {
 		if (params == null)

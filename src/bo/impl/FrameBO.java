@@ -18,7 +18,6 @@ public class FrameBO implements IFrameBO{
 	
 	@Override
 	public List<TrainingFrame> getListFrame() {
-		// TODO Auto-generated method stub
 		return FrameDAO.getInstance().getListFrame();
 	}
 

@@ -26,14 +26,14 @@ public class Config {
 	public static String SERVER_NAME = "jdbc:sqlserver://localhost:1433";
 	public static String DATABASE_NAME = "TT_TUYENSINH_2";
 	public static String USERNAME_DB = "sa";
-	public static String PASSWORD_DB = "sa";
+	public static String PASSWORD_DB = "0123456789";
 	public static String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
 	public static void main(String[] args) {
 			Connection conn = null;
 			try {
 				Class.forName(DBDRIVER);
-				conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=TT_TUYENSINH_2","sa","sa");
+				conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=TT_TUYENSINH_2","sa","0123456789");
 				System.out.println(conn);
 				System.out.println("connect successfully!");
 			} catch (Exception ex) {

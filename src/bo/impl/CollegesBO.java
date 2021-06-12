@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import bo.ICollegesBO;
 import dao.ICollegesDAO;
+import dao.impl.AddressDAO;
 import dao.impl.CollegesDAO;
 import mapper.MapperList;
+import model.AddressDetail;
 import model.CollegesInfo;
 import page.Page;
 
@@ -57,4 +59,5 @@ public class CollegesBO implements ICollegesBO {
 
 		return CollegesDAO.getInstance().insertColleges(c);
 	}
+
 }

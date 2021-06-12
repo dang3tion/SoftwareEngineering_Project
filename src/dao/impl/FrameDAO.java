@@ -68,30 +68,6 @@ public class FrameDAO extends AbstractDAO<TrainingFrame> implements IFrameDAO {
 		return query(sql, new FrameMapper());
 	}
 
-	@Override
-	public int doInsert(TrainingFrame t, Object... params) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean doUpdate(TrainingFrame t, Object... params) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean doDelete(int id, Object... params) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public TrainingFrame doGet(int id, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public static void main(String[] args) {
 		System.out.println(getInstance().getIDFrameUnique("2", "1", "2021/11/2"));
 	}
