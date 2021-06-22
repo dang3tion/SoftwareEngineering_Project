@@ -3093,3 +3093,11 @@ figure figcaption {
 	color: white;
 }
 
+.disable{
+	display: none;
+}
+
+.page-item .active{
+	background: black;
+    color: white!important;;
+}

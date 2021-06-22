@@ -14,6 +14,23 @@ import dao.IGenericDAO;
 import mapper.RowMapper;
 
 public abstract class AbstractDAO<T> implements IGenericDAO<T> {
+	@Override
+	public int count(String sql, Object... params) {
+		int count = 0;
+		Connection cn = SinglePool.getConnection();
+		try {
+			PreparedStatement st = cn.prepareStatement(sql);
+			setParams(st, params);
+			ResultSet rs = st.executeQuery();
+			rs.next();
+			count = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SinglePool.returnConnection(cn);
+		}
+		return count;
+	}
 
 	@Override
 	public List<T> query(String sql, RowMapper<T> rowMapper, Object... params) {

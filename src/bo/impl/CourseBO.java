@@ -23,8 +23,4 @@ public class CourseBO implements ICourseBO {
 	public List<Course> getCourses() {
 		return courseDAO.getCourses();
 	}
-
-	public static void main(String[] args) {
-		System.out.println("asd".charAt(0));
-	}
 }

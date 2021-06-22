@@ -31,6 +31,6 @@ public class HomeController extends HttpServlet{
 		
 	    req.setAttribute("addresses", addressBO.getAllDistrict());
 	    req.setAttribute("courses", courseBO.getCourses());;
-		req.getRequestDispatcher("view/indexUI.jsp").forward(req, resp);
+		req.getRequestDispatcher("view/jsp/page/IndexUi.jsp").forward(req, resp);
 	}
 }

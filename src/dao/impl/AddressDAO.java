@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,7 +38,6 @@ public class AddressDAO extends AbstractDAO<AddressDetail> implements IAddressDA
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return false;
 	}
 
@@ -45,6 +45,7 @@ public class AddressDAO extends AbstractDAO<AddressDetail> implements IAddressDA
 	public List<String> getAllDistrict() {
 		List<String> addresses = new ArrayList<String>();
 		String sql = "SELECT DISTINCT(TINH) FROM DIACHI";
+		Connection cn = SinglePool.getConnection();
 		try {
 			Statement st = SinglePool.getConnection().createStatement();
 			ResultSet rs = st.executeQuery(sql);
@@ -52,7 +53,10 @@ public class AddressDAO extends AbstractDAO<AddressDetail> implements IAddressDA
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			SinglePool.returnConnection(cn);
 		}
+
 		
 		return addresses;
 	}

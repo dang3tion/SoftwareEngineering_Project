@@ -104,7 +104,22 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 		return false;
 	}
 
-	public static void main(String[] args) {
-	}
 
+	@Override
+	public int countColleges(String search, Object... params) {
+		String sql = "SELECT COUNT(*) FROM TRUONGHOC th ";
+		sql += "JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG ";
+		sql += "JOIN KHUNGDT_TRUONG kt ON th.ID_TRUONG = kt.ID_TRUONG ";
+		sql += "JOIN NGANH_TOHOP nt ON nt.ID_KDT = kt.ID_KDT ";
+		sql += "JOIN NGANH n ON n.ID_NGANH = nt.ID_NGANH ";
+		sql += "WHERE th.TENTRUONG LIKE '%" + search + "%' ";
+		// filter condition
+		if (params.length > 0) {
+			sql += "AND dc.TINH LIKE ? AND n.TEN_NGANH LIKE ? AND th.LOAITRUONG LIKE ?";
+		}
+				
+		return count(sql, params);
+		
+	}
+	
 }

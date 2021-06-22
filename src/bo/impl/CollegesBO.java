@@ -30,8 +30,8 @@ public class CollegesBO implements ICollegesBO {
 	}
 
 	@Override
-	public List<CollegesInfo> searchColleges(String search, Object... params) {
-		return collegeDAO.searchColleges(search, new Page(), params);
+	public List<CollegesInfo> searchColleges(String search, Page page, Object... params) {
+		return collegeDAO.searchColleges(search, page, params);
 	}
 
 	@Override
@@ -58,6 +58,11 @@ public class CollegesBO implements ICollegesBO {
 		c.setListPhone(MapperList.getInstance().createPhoneDetail(request));
 
 		return CollegesDAO.getInstance().insertColleges(c);
+	}
+
+	@Override
+	public int countColleges(String search, Object... params) {
+		return CollegesDAO.getInstance().countColleges(search, params);
 	}
 
 }

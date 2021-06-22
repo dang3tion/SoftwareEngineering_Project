@@ -14,9 +14,10 @@
         <div class="site-section bg-light">
             <div class="container">
                 <div class="form-search-wrap mb-3" data-aos="fade-up" data-aos-delay={200}>
-                    <form method="GET" action="college-list">
+                    <form id="search-form" method="GET" action="college-list">
                     <input type="hidden" name="search-method" value="normal"/>
                     <input type="hidden" name="search" value="${search}"/>
+                    <input type="hidden" id="input-page" name="page" value="${page}" />
                         <div class="row align-items-center">
                             <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
                                 <div class="wrap-icon border">
@@ -113,22 +114,27 @@
                 <nav class="rehomes-pagination">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link" href="#">
-                                <h5> 1</h5>
+                            <a class="page-link ${page-1 <0 ? "disable" :""}" onclick="switchPage(${page-1})">
+                                <h5> Previous</h5>
                             </a>
                         </li>
-                        <li class="page-item">
-                            <a class="page-link active" href="#">
-                                <h5> 2</h5>
+                        <li class="page-item ${page - 1< 0 ? "disable" :""}" onclick="switchPage(${page-1})">
+                            <a class="page-link">
+                                <h5> ${page-1}</h5>
                             </a>
                         </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <h5> 3</h5>
+                        <li class="page-item"  onclick="switchPage(${page})">
+                            <a class="page-link active">
+                                <h5> ${page}</h5>
                             </a>
                         </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
+                        <li class="page-item ${page+1>countPage? "disable" :""}" onclick="switchPage(${page+1})">
+                            <a class="page-link">
+                                <h5> ${page+1}</h5>
+                            </a>
+                        </li>
+                        <li class="page-item ${page+1>countPage? "disable" :""}"  onclick="switchPage(${page+1})">
+                            <a class="page-link">
                                 <h5> Next</h5>
                             </a>
                         </li>
@@ -136,7 +142,7 @@
                 </nav>
                 <div class="page-counter">
                     <p>
-                        Page <span>1</span> of <span>60</span> results
+                        Page <span>${page}</span> of <span>${count}</span> results
                     </p>
                 </div>
             </div>
@@ -144,5 +150,13 @@
 
 
 	<jsp:include page="../component/footer.jsp"></jsp:include>
+	<script type="text/javascript">
+	 function switchPage(page){
+		 	var searchForm = document.getElementById("search-form");
+		 	var inputPage = document.getElementById("input-page");
+		 	inputPage.value = page;
+		 	searchForm.submit();
+		 }
+	</script>
 </body>
 </html>
