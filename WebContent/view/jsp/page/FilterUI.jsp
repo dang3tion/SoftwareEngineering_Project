@@ -23,7 +23,7 @@
                                 <div class="wrap-icon border">
                                     <span class="icon icon-room"></span>
                                     <select class="form-control rounded" name="province" id>
-					                            <option value>All</option>
+					                            <option value>Toàn tỉnh</option>
 											  <c:forEach items="${addresses}" var="item">
 											  	<option value="${item}" ${item == province ? "selected" : ""}>${item}</option>
 											  </c:forEach>
@@ -36,7 +36,7 @@
                       <span class="icon-keyboard_arrow_down"></span>
                                     </span>
                                     <select class="form-control rounded" name="course" id>
-				                      <option value>All Major</option>
+				                      <option value>Tất cả các ngành</option>
 										<c:forEach items="${courses}" var="item">
 											<option value="${item.name}" ${item.name == course ? "selected" : ""}>${item.name}</option>
 										</c:forEach>
@@ -49,7 +49,7 @@
                       <span class="icon-keyboard_arrow_down"></span>
                                     </span>
                                     <select class="form-control rounded" name="type" id>
-				                      <option value>Type</option>
+				                      <option value>Loại khung đào tạo</option>
 										<c:forEach items="${frames}" var="item">
 											<option value="${item.typeFrame}" ${item.typeFrame == type ? "selected" : ""}>${item.typeFrame}</option>
 										</c:forEach>										
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
                           	 <button type="submit" class="cta btn btn-primary btn-block rounded">
-            		            <span class="text-white rounded">Filter</span>
+            		            <span class="text-white rounded">Lọc</span>
 			                 </button>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
 
                 <div class="row mb-5">
                     <div class="col-md-7 text-left border-primary">
-                        <h2 class="font-weight-light text-primary">Result</h2>
+                        <h2 class="font-weight-light text-primary">Kết quả tìm kiếm</h2>
                     </div>
                 </div>
                 <section class="">
@@ -115,7 +115,7 @@
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link ${page-1 <0 ? "disable" :""}" onclick="switchPage(${page-1})">
-                                <h5> Previous</h5>
+                                <h5> Trước</h5>
                             </a>
                         </li>
                         <li class="page-item ${page - 1< 0 ? "disable" :""}" onclick="switchPage(${page-1})">
@@ -135,14 +135,14 @@
                         </li>
                         <li class="page-item ${page+1>countPage? "disable" :""}"  onclick="switchPage(${page+1})">
                             <a class="page-link">
-                                <h5> Next</h5>
+                                <h5> Sau</h5>
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <div class="page-counter">
                     <p>
-                        Page <span>${page}</span> of <span>${count}</span> results
+                        Trang <span>${page}</span> trong <span>${count}</span> kết quả
                     </p>
                 </div>
             </div>
