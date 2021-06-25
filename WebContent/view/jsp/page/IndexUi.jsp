@@ -1,134 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<c:url var="url" scope="session" value="/view"></c:url>
 <html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-<c:url value="/view" var="url"></c:url>
- 
-<head>
-    <title>DirectoryAds &mdash; Colorlib Website Template</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="${url}/fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="${url}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${url}/css/magnific-popup.css">
-    <link rel="stylesheet" href="${url}/css/jquery-ui.css">
-    <link rel="stylesheet" href="${url}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="${url}/css/owl.theme.default.min.css">
-
-    <link rel="stylesheet" href="${url}/css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="${url}/fonts/flaticon/font/flaticon.css">
-
-    <link rel="stylesheet" href="${url}/css/aos.css">
-    <link rel="stylesheet" href="${url}/css/rangeslider.css">
-
-    <link rel="stylesheet" href="${url}/css/style.css">
     <link rel="stylesheet" href="${url}/css/search.css">
+	<jsp:include page="../component/menu.jsp"></jsp:include>
 
-</head>
 
 <body>
 
-    <div class="site-wrap">
-
-        <div class="site-mobile-menu">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
-            </div>
-            <div class="site-mobile-menu-body"></div>
-        </div>
-
-        <header class="site-navbar container py-0 " role="banner">
-
-            <div class="row align-items-center">
-                <div class="col-6 col-xl-2">
-                    <h1 class="mb-0 site-logo">
-                        <a class="" href="/" class="text-white mb-0">
-              IFly College
-            </a>
-                    </h1>
-                </div>
-                <div class="col-12 col-md-10 d-none d-xl-block">
-                    <nav class="site-navigation position-relative text-right" role="navigation">
-                        <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                            <li class="active hover-menu">
-                                <a href="/home">
-                  Home
-                </a>
-                            </li>
-                            <li class="active hover-menu">
-                                <a href="/searching">
-                  Filter
-                </a>
-                            </li>
-                            <li class="active hover-menu">
-                                <a href="/admission">
-                  Admission
-                </a>
-                            </li>
-                            <li class="active hover-menu">
-                                <a href="/advice">
-                  Advice
-                </a>
-                            </li>
-                            <li class="active hover-menu">
-                                <a href="/introduce">
-                  Introduce
-                </a>
-                            </li>
-                            <li class="active hover-menu">
-                                <a href="/contact">
-                  Contact
-                </a>
-                            </li>
-                            <li class="ml-xl-3 login hover-menu">
-                                <a href="/login">
-                                    <span class="border-left pl-xl-4"> Log In</span>
-                                </a>
-                            </li>
-                            <li class="hover-regis">
-                                <a class="" href="/signup" class="cta">
-                                    <span class="bg-primary text-white rounded p-2">
-                    Register
-                  </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="d-inline-block d-xl-none ml-auto py-3 col-6 text-right" style=" position: relative; top: 3px ">
-                    <a href="#" class="site-menu-toggle js-menu-toggle text-white">
-                        <span class="icon-menu h3"></span>
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <div class="site-blocks-cover overlay" style=" background-image:url('${url}/images/hero_2.jpg')" data-aos="fade" data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-md-12">
-                        <div class="row justify-content-center mb-4">
-                            <div class="col-md-8 text-center">
-                                <h1 class data-aos="fade-up">
-                                    Welcome to IFLY College
-                                </h1>
-                                <p data-aos="fade-up" data-aos-delay={100}>
-                                    Look up the most interesting college
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-search-wrap mb-3" data-aos="fade-up" data-aos-delay={200}>
+	<div class="site-blocks-cover overlay"
+		style=" background-image:url('${url}/images/hero_2.jpg')"
+		data-aos="fade" data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div
+				class="row align-items-center justify-content-center text-center">
+				<div class="col-md-12">
+					<div class="row justify-content-center mb-4">
+						<div class="col-md-8 text-center">
+							<h1 class data-aos="fade-up">Chào mừng đến với IFLY College</h1>
+							<p data-aos="fade-up" data-aos-delay={100}>Tìm kiếm ngôi
+								trường thích hợp nhất</p>
+						</div>
+					</div>
+					<c:if test="${not empty msg }">
+						<script type="text/javascript">
+							alert('Thêm thông tin trường mới thành công');
+						</script>
+					</c:if>
+					<div class="form-search-wrap mb-3" data-aos="fade-up"
+						data-aos-delay={200}>
                             <form id="search-form" method="get" action="college-list">
                                 <div class="row align-items-center">
                                     <div class="col-lg-12 mb-4 mb-xl-0 col-xl-4 search-input">
                                     	<input type="hidden" name="search-method" value="normal"/>
-                                        <input type="text" name="search" id="search" class="form-control rounded" placeholder="Enter college name " autoFocus />
+                                        <input type="text" name="search" id="search" class="form-control rounded" placeholder="Nhập tên trường " autoFocus autocomplete="off" />
 										<div class="autocom-box"></div>
 								        <div class="icon"><i class="fas fa-search"></i>
         							</div>
@@ -138,7 +45,7 @@
                                         <div class="wrap-icon">
                                             <span class="icon icon-room"></span>
                                             <select class="form-control rounded" name="province" id>
-					                            <option value>All</option>
+					                            <option value>Toàn tỉnh</option>
 											  <c:forEach items="${addresses}" var="item">
 											  	<option value="${item}">${item}</option>
 											  </c:forEach>
@@ -152,7 +59,7 @@
                           <span class="icon-keyboard_arrow_down"></span>
                                             </span>
                                             <select class="form-control rounded" name="course" id>                                       
-					                          <option value>All major</option>
+					                          <option value>Tất cả các ngành</option>
 											  <c:forEach items="${courses}" var="item">
 											  	<option value="${item.name}">${item.name}</option>
 											  </c:forEach>
@@ -163,7 +70,7 @@
                                     <div class="col-lg-12 col-xl-2 ml-auto text-right">
                                         <button type="submit" class="cta btn btn-primary btn-block rounded">
                                             <span class="bg-primary text-white rounded">
-                          Go to Filter
+                          Tìm kiếm
                         </span>
                                         </NavLink>
                                     </div>
