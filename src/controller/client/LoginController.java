@@ -17,7 +17,7 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/view/jsp/page/Login.jsp");
 		dispatcher.forward(request, response);
-
+		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -30,14 +30,14 @@ public class LoginController extends HttpServlet {
 
 				request.setAttribute("msg", "Sai tên tài khoản hoặc mật khẩu");
 				doGet(request, response);
+				return;
 			} else {
-				System.out.println("dungs");
 				HttpSession sess = request.getSession();
 				sess.setAttribute("token", "token");
 				response.sendRedirect(request.getContextPath() + "/admin");
+				return;
 			}
 		} else if (request.getParameter("logout") != null) {
-			System.out.println("logout");
 			HttpSession sess = request.getSession();
 			sess.removeAttribute("token");
 			doGet(request, response);
