@@ -21,7 +21,6 @@ import dao.ICollegesDAO;
 @WebServlet(urlPatterns = {"/home"})
 public class HomeController extends HttpServlet{
 	private ICourseBO courseBO = CourseBO.getInstance();
-	private IAddressBO addressBO = AddressBO.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +28,6 @@ public class HomeController extends HttpServlet{
 	    resp.setCharacterEncoding("UTF-8");
 	    resp.setContentType("text/html; charset=UTF-8");
 		
-	    req.setAttribute("addresses", addressBO.getAllDistrict());
 	    req.setAttribute("courses", courseBO.getCourses());;
 		req.getRequestDispatcher("view/jsp/page/IndexUi.jsp").forward(req, resp);
 	}
