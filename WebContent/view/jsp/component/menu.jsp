@@ -47,15 +47,16 @@
 		<div class="row align-items-center">
 			<div class="col-6 col-xl-2">
 				<h1 class="mb-0 site-logo">
-					<a class="" href="${pageContext.request.contextPath}/" class="text-white mb-0"> IFly College </a>
+					<a class="" href="${pageContext.request.contextPath}/"
+						class="text-white mb-0"> IFly College </a>
 				</h1>
 			</div>
 			<div class="col-12 col-md-10 d-none d-xl-block">
 				<nav class="site-navigation position-relative text-right"
 					role="navigation">
 					<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-						<li class="active hover-menu"><a href="${pageContext.request.contextPath}/"> Trang chủ
-						</a></li>
+						<li class="active hover-menu"><a
+							href="${pageContext.request.contextPath}/"> Trang chủ </a></li>
 						<li class="active hover-menu"><a
 							href="${pageContext.request.contextPath}/view/college-list">
 								Trang lọc </a></li>
@@ -71,14 +72,21 @@
 									href="${pageContext.request.contextPath}/admin/additional">
 										<span class="border-left pl-xl-4">Thêm thông tin</span>
 								</a></li>
-								<li class="hover-regis"><a class="" href="${pageContext.request.contextPath}/admin" class="cta">
-										<span class="bg-primary text-white rounded p-2"> Đăng
-											xuất </span>
-								</a></li>
+								<li class="hover-regis">
+
+									<form action="${pageContext.request.contextPath}/login"
+										method="POST">
+										<button type="submit" name="logout" class=""
+											style="display: contents;'""cta">
+											<span class="bg-primary text-white rounded p-2"> Đăng
+												xuất </span>
+										</button>
+									</form>
+								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="ml-xl-3 login hover-menu"><a
-									href="${pageContext.request.contextPath}/admin"> <span
+									href="${pageContext.request.contextPath}/login"> <span
 										class="border-left pl-xl-4">Đăng nhập</span>
 								</a></li>
 								<li class="hover-regis"><a class="" href="#" class="cta">
