@@ -26,15 +26,18 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 
 	@Override
 	public List<CollegesInfo> searchColleges(String search, Page page, Object... params) {
-		String sql = "SELECT * FROM TRUONGHOC th ";
-		sql += "JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG ";
-		sql += "JOIN KHUNGDT_TRUONG kt ON th.ID_TRUONG = kt.ID_TRUONG ";
-		sql += "JOIN NGANH_TOHOP nt ON nt.ID_KDT = kt.ID_KDT ";
-		sql += "JOIN NGANH n ON n.ID_NGANH = nt.ID_NGANH ";
-		sql += "WHERE th.TENTRUONG LIKE '%" + search + "%' ";
+		String sql = "SELECT * FROM TRUONGHOC TH ";
+		sql += "WHERE TH.TENTRUONG LIKE '%" + search + "%' ";
 		// filter condition
 		if (params.length > 0) {
-			sql += "AND dc.TINH LIKE ? AND n.TEN_NGANH LIKE ? AND th.LOAITRUONG LIKE ?";
+			sql += "AND EXISTS(SELECT * FROM DIACHI DC WHERE TINH LIKE ? AND LOAITRUONG LIKE ? AND DC.ID_TRUONG = TH.ID_TRUONG";
+			sql += ") AND EXISTS(";
+			sql += "SELECT * FROM KHUNGDT_TRUONG KT WHERE KT.ID_TRUONG = TH.ID_TRUONG AND ";
+			sql += "EXISTS(";
+			sql += "SELECT * FROM NGANH_TOHOP NT WHERE NT.ID_KDT = KT.ID_KDT AND ";
+			sql += "EXISTS(";
+			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ?";
+			sql += ")))";
 		}
 		//
 		sql += " ORDER BY @@CURSOR_ROWS OFFSET " + page.getOffset() + " ROWS FETCH NEXT " + page.getMaxPageItem()
@@ -107,15 +110,18 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 
 	@Override
 	public int countColleges(String search, Object... params) {
-		String sql = "SELECT COUNT(*) FROM TRUONGHOC th ";
-		sql += "JOIN DIACHI dc ON th.ID_TRUONG = dc.ID_TRUONG ";
-		sql += "JOIN KHUNGDT_TRUONG kt ON th.ID_TRUONG = kt.ID_TRUONG ";
-		sql += "JOIN NGANH_TOHOP nt ON nt.ID_KDT = kt.ID_KDT ";
-		sql += "JOIN NGANH n ON n.ID_NGANH = nt.ID_NGANH ";
-		sql += "WHERE th.TENTRUONG LIKE '%" + search + "%' ";
+		String sql = "SELECT COUNT(*) FROM TRUONGHOC TH ";
+		sql += "WHERE TH.TENTRUONG LIKE '%" + search + "%' ";
 		// filter condition
 		if (params.length > 0) {
-			sql += "AND dc.TINH LIKE ? AND n.TEN_NGANH LIKE ? AND th.LOAITRUONG LIKE ?";
+			sql += "AND EXISTS(SELECT * FROM DIACHI DC WHERE TINH LIKE ? AND LOAITRUONG LIKE ? AND DC.ID_TRUONG = TH.ID_TRUONG";
+			sql += ") AND EXISTS(";
+			sql += "SELECT * FROM KHUNGDT_TRUONG KT WHERE KT.ID_TRUONG = TH.ID_TRUONG AND ";
+			sql += "EXISTS(";
+			sql += "SELECT * FROM NGANH_TOHOP NT WHERE NT.ID_KDT = KT.ID_KDT AND ";
+			sql += "EXISTS(";
+			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ?";
+			sql += ")))";
 		}
 				
 		return count(sql, params);
