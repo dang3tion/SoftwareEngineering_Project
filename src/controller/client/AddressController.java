@@ -1,8 +1,12 @@
 package controller.client;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,8 +22,27 @@ public class AddressController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
-		System.out.println(jsonString);
+		resp.setContentType("text/string;charset=UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		PrintWriter writer = new PrintWriter(resp.getWriter());
+		if (req.getParameter("id") != null) {
+			try {
+				int id = Integer.parseInt(req.getParameter("id"));
+				String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/" + id + "/district");
+				writer.append(jsonString);
+				return;
+			} catch (Exception e) {
+				writer.append("wrong input");
+			}
+
+		} else {
+			String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
+			resp.setContentType("text/string;charset=UTF-8");
+
+			writer.append(jsonString);
+			return;
+		}
+
 	}
 
 	private static String getJSONString(String URL) {
@@ -44,7 +67,9 @@ public class AddressController extends HttpServlet {
 			e.printStackTrace();
 		}
 		return JSONString;
-	}public static void main(String[] args) {
+	}
+
+	public static void main(String[] args) {
 		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
 		System.out.println(jsonString);
 	}
