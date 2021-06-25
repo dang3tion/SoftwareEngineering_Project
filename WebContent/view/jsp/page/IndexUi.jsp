@@ -45,11 +45,7 @@
                                         <div class="wrap-icon">
                                             <span class="icon icon-room"></span>
                                             <select class="form-control rounded" name="province" id>
-					                            <option value>Toàn tỉnh</option>
-											  <c:forEach items="${addresses}" var="item">
-											  	<option value="${item}">${item}</option>
-											  </c:forEach>
-												
+					                            <option value>Toàn tỉnh</option>												
 					                        </select>
                                         </div>
                                     </div>
@@ -253,8 +249,19 @@
 		</div>
 	</div>
 
-
     <script src="${url}/js/search.js"></script> 
 	<jsp:include page="../component/footer.jsp"></jsp:include>
+	<script>
+	$.getJSON("https://cors-anywhere.herokuapp.com/https://thongtindoanhnghiep.co/api/city/",(data)=> {
+		var list = data.LtsItem;
+		var province = document.getElementsByName("province")[0];
+		list.forEach((item, index)=>{
+			var ele = document.createElement("option");
+			ele.setAttribute("value", item.ID);
+			ele.textContent = item.Title;
+			province.appendChild(ele);
+		})
+	});	
+	</script>
 </body>
 </html>

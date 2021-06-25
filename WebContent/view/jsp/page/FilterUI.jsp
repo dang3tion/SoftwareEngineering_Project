@@ -24,10 +24,7 @@
                                     <span class="icon icon-room"></span>
                                     <select class="form-control rounded" name="province" id>
 					                            <option value>Toàn tỉnh</option>
-											  <c:forEach items="${addresses}" var="item">
-											  	<option value="${item}" ${item == province ? "selected" : ""}>${item}</option>
-											  </c:forEach>
-                    </select>
+				                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
@@ -151,12 +148,27 @@
 
 	<jsp:include page="../component/footer.jsp"></jsp:include>
 	<script type="text/javascript">
+	 var provinceId = parseInt(${province});
 	 function switchPage(page){
 		 	var searchForm = document.getElementById("search-form");
 		 	var inputPage = document.getElementById("input-page");
 		 	inputPage.value = page;
 		 	searchForm.submit();
 		 }
+	$.getJSON("https://cors-anywhere.herokuapp.com/https://thongtindoanhnghiep.co/api/city/",(data)=> {
+		var list = data.LtsItem;
+		var province = document.getElementsByName("province")[0];
+		list.forEach((item, index)=>{
+			var ele = document.createElement("option");
+			ele.setAttribute("value", item.ID);
+			if(item.ID == provinceId){
+				ele.setAttribute("selected", "selected");
+			}
+			ele.textContent = item.Title;
+			province.appendChild(ele);
+		})
+	});	
+
 	</script>
 </body>
 </html>
