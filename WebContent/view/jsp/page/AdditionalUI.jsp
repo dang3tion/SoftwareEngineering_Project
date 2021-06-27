@@ -113,7 +113,7 @@
 
 										<div class="input">
 											<input name="urlWeb" placeHolder="Nhập URL website"
-												type="text" value="">
+												type="text" value="a">
 
 
 
@@ -677,11 +677,7 @@
 
 	<jsp:include page="../component/footer.jsp"></jsp:include>
 	<script>
-
-	var url = window.location.origin;
                     function onclickProvince(id, l) {
-
-                  
                         $.getJSON("${pageContext.request.contextPath}/address?id=" + id ,
                             function(data) {
                                 console.log(data);
@@ -697,8 +693,6 @@
                             });;
                     }
                     $.getJSON("${pageContext.request.contextPath}/address", function(data) {
-                      
-						
                         var se = document.getElementById('province1');
                         var arr = data['LtsItem'];
                         se.setAttribute('onchange', 'onclickProvince(this.value,1)');
@@ -711,33 +705,11 @@
                     });;
                     
                     
-                    var countAddress = 1;
-
-                    function addAddress() {
-
-
-                    	countAddress = countAddress + 1;
-                    	$('#address-table').append(
-                    		'<tr> <th scope="row">' + countAddress + '</th> <td> <div class="input"> <input name="tieude-diachi" placeHolder="Nhập tiêu đề VD: cơ sở 1,..." type="text" value=""> </div> </td> <td> <div class="input"> <input name="diachi" placeHolder="Nhập địa chỉ" type="text" value=""> </div> </td> <td> <div class="input"> <select id="province' + countAddress + '" style="width: 150px" name="diachi-tinh"> <option disabled selected>Chọn tỉnh thành</option> </select> </div> </td> <td> <div class="input"> <select name="diachi-huyen" id="district' + countAddress + '" style="width: 150px"> <option disabled selected value="chuachon">Chưa chọn</option> </select> </div> </td> <td> <div class="input"> <select name="diachi-trangthai" > <option value="hoatdong">Hoạt động</option> <option value="ngunghoatdong">Ngưng hoạt động</option> </select> </div> </td> </tr>'
-                    	)
-                    	$.getJSON("${pageContext.request.contextPath}/address", function(data) {
-                    		var se = document.getElementById('province' + countAddress);
-                    		var arr = data['LtsItem'];
-                    		se.setAttribute('onchange', 'onclickProvince(this.value,' + countAddress + ')');
-                    		for (let a = 0; a < arr.length - 1; a++) {
-                    			let option = document.createElement('option');
-                    			option.setAttribute('value', arr[a]['ID']);
-                    			option.innerHTML = arr[a]['Title'];
-                    			se.appendChild(option);
-                    		}
-
-                    	});
-                    }
-
+                    
                 </script>
 
 
-	<script src="${url}/js/additional.js" charset="UTF-8"> </script>
+	<script src="${url}/js/additional.js"></script>
 	<script>
 	var countFrame=1;
 	function addFrame(){
@@ -756,7 +728,7 @@
 	
 	'<option value="${course.id }">${course.name }</option> '+
 	</c:forEach>
-	' </select> </div> <td> <div class="input"> <input name="diem-nganh'+countFrame+'" placeHolder="Nhập điểm" type="text" value=""> </div> </td> <td> <div class="input"> <input name="chitieu-nganh'+countFrame+'" placeHolder="Nhập chỉ tiêu" type="number" value=""> </div> </td> <td> <div class="input"> <input name="tohop-nganh'+countFrame+'" placeHolder="VD: A01,A02" type="text" value=""> </div> </td> <td> <div class="input"> <textarea value="" name="mota-nganh'+countFrame+'" placeHolder="Nhập mô tả" type="text" style="height: 100px; padding: 5px; outline: 0; width: 300px;" ></textarea>'
+	' </select> </div> <td> <div class="input"> <input name="diem-nganh'+countFrame+'" placeHolder="Nhập điểm" type="number" value=""> </div> </td> <td> <div class="input"> <input name="chitieu-nganh'+countFrame+'" placeHolder="Nhập chỉ tiêu" type="number" value=""> </div> </td> <td> <div class="input"> <input name="tohop-nganh'+countFrame+'" placeHolder="VD: A01,A02" type="text" value=""> </div> </td> <td> <div class="input"> <textarea value="" name="mota-nganh'+countFrame+'" placeHolder="Nhập mô tả" type="text" style="height: 100px; padding: 5px; outline: 0; width: 300px;" ></textarea>'
 	
 	)
 }

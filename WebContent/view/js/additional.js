@@ -1,3 +1,25 @@
+var countAddress = 1;
+
+function addAddress() {
+
+
+	countAddress = countAddress + 1;
+	$('#address-table').append(
+		'<tr> <th scope="row">'  + countAddress + '</th> <td> <div class="input"> <input name="tieude-diachi" placeHolder="Nhập tiêu đề VD: cơ sở 1,..." type="text" value=""> </div> </td> <td> <div class="input"> <input name="diachi" placeHolder="Nhập địa chỉ" type="text" value=""> </div> </td> <td> <div class="input"> <select id="province'  + countAddress   +'" style="width: 150px" name="diachi-tinh"> <option disabled selected>Chọn tỉnh thành</option> </select> </div> </td> <td> <div class="input"> <select name="diachi-huyen" id="district' + countAddress + '" style="width: 150px"> <option disabled selected value="chuachon">Chưa chọn</option> </select> </div> </td> <td> <div class="input"> <select name="diachi-trangthai" > <option value="hoatdong">Hoạt động</option> <option value="ngunghoatdong">Ngưng hoạt động</option> </select> </div> </td> </tr>'
+	)
+	$.getJSON("https://thongtindoanhnghiep.co/api/city/", function(data) {
+		var se = document.getElementById('province' + countAddress);
+		var arr = data['LtsItem'];
+		se.setAttribute('onchange', 'onclickProvince(this.value,' + countAddress + ')');
+		for (let a = 0; a < arr.length - 1; a++) {
+			let option = document.createElement('option');
+			option.setAttribute('value', arr[a]['ID']);
+			option.innerHTML = arr[a]['Title'];
+			se.appendChild(option);
+		}
+
+	});
+}
 
 
 var countPno = 1;
