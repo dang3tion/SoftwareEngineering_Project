@@ -30,6 +30,7 @@ public class ManagerController extends HttpServlet {
 		List<TrainingFrame> lstFrame = FrameBO.getInstance().getListFrame();
 		request.setAttribute("lstFrame", lstFrame);
 		request.setAttribute("lstCourse", lstCourse);
+		
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/view/jsp/page/AdditionalUI.jsp");
 		dispatcher.forward(request, response);
