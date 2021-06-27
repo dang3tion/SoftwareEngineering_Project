@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 @WebServlet(urlPatterns = { "/address" })
 public class AddressController extends HttpServlet {
 
@@ -25,6 +28,10 @@ public class AddressController extends HttpServlet {
 		resp.setContentType("text/string;charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter writer = new PrintWriter(resp.getWriter());
+		resp.addHeader("Access-Control-Allow-Origin", "*");
+		resp.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+		resp.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+		resp.addHeader("Access-Control-Max-Age", "1728000");
 		if (req.getParameter("id") != null) {
 			try {
 				int id = Integer.parseInt(req.getParameter("id"));
@@ -42,6 +49,7 @@ public class AddressController extends HttpServlet {
 			writer.append(jsonString);
 			return;
 		}
+
 
 	}
 
