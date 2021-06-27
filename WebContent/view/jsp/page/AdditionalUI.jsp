@@ -554,7 +554,7 @@
 											<td>
 												<div class="input">
 													<input name="diem-nganh1" placeHolder="Nhập điểm"
-														type="number" value="" step=0.01>
+														type="text" value="">
 												</div>
 											</td>
 
@@ -679,8 +679,7 @@
 	<jsp:include page="../component/footer.jsp"></jsp:include>
 	<script>
                     function onclickProvince(id, l) {
-                        $.getJSON("https://cors-anywhere.herokuapp.com/https://thongtindoanhnghiep.co/api/city/" + id +
-                            "/district",
+                        $.getJSON("${pageContext.request.contextPath}/address?id=" + id ,
                             function(data) {
                                 console.log(data);
                                 var se = document.getElementById('district' + l);
@@ -692,10 +691,9 @@
                                     option.innerHTML = arr[a]['Title'];
                                     se.appendChild(option);
                                 }
-
                             });;
                     }
-                    $.getJSON("https://cors-anywhere.herokuapp.com/https://thongtindoanhnghiep.co/api/city/", function(data) {
+                    $.getJSON("${pageContext.request.contextPath}/address", function(data) {
                         var se = document.getElementById('province1');
                         var arr = data['LtsItem'];
                         se.setAttribute('onchange', 'onclickProvince(this.value,1)');
@@ -705,7 +703,6 @@
                             option.innerHTML = arr[a]['Title'];
                             se.appendChild(option);
                         }
-
                     });;
                     
                     

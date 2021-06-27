@@ -2,12 +2,16 @@ package dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import connection.AccessDatabase;
+import connection.SinglePool;
 import dao.IFrameDAO;
+import mapper.CollegesMapper;
 import mapper.FrameMapper;
 import model.TrainingFrame;
 
@@ -67,7 +71,23 @@ public class FrameDAO extends AbstractDAO<TrainingFrame> implements IFrameDAO {
 
 		return query(sql, new FrameMapper());
 	}
-
+	
+	@Override
+	public List<String> getListFrameByIdCollege(int idCollege) {
+		List<String> result = new ArrayList<String>();
+		String sql = "SELECT MOTA FROM KHUNGDT_TRUONG WHERE ID_TRUONG = "+idCollege;
+		try {
+			Statement st = SinglePool.getConnection().createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next())
+				result.add(rs.getNString(1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result; 		
+	}
+	
 	public static void main(String[] args) {
 		System.out.println(getInstance().getIDFrameUnique("2", "1", "2021/11/2"));
 	}

@@ -72,7 +72,7 @@
                         <div class="row">
                         <c:forEach items="${colleges}" var="item">
                             <div class="col-md-6 ">
-                                <a class=" hover-bg-enlarge link-normal" href="/college-list?action=detail&id=${item.id}">
+                                <a class=" hover-bg-enlarge link-normal" href="/Admission/detail?id=${item.id}">
                                     <div class="propertie-item set-bg2 " style="background-image: url('${url}/images/college/cb.jpg')">
                                         <div class="propertie-info text-white" style="background-color: rgba(0, 0, 0, 0.212);">
                                             <div class="info-warp">

@@ -41,23 +41,4 @@ public class AddressDAO extends AbstractDAO<AddressDetail> implements IAddressDA
 		return false;
 	}
 
-	@Override
-	public List<String> getAllDistrict() {
-		List<String> addresses = new ArrayList<String>();
-		String sql = "SELECT DISTINCT(TINH) FROM DIACHI";
-		Connection cn = SinglePool.getConnection();
-		try {
-			Statement st = SinglePool.getConnection().createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			while(rs.next()) addresses.add(rs.getNString(1));
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			SinglePool.returnConnection(cn);
-		}
-
-		
-		return addresses;
-	}
 }

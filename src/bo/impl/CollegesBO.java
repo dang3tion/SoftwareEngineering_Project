@@ -62,7 +62,22 @@ public class CollegesBO implements ICollegesBO {
 
 	@Override
 	public int countColleges(String search, Object... params) {
-		return CollegesDAO.getInstance().countColleges(search, params);
+		return collegeDAO.countColleges(search, params);
+	}
+
+	@Override
+	public CollegesInfo getCollegeById(int id) {
+		return collegeDAO.getCollegeById(id);
+	}
+
+	@Override
+	public List<String> getAddress(int idCollege) {
+		return collegeDAO.getAddress(idCollege);
+	}
+
+	@Override
+	public List<String> getPhone(int idCollege) {
+		return collegeDAO.getPhone(idCollege);
 	}
 
 }

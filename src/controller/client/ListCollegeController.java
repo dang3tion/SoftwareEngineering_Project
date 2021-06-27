@@ -69,20 +69,19 @@ public class ListCollegeController extends HttpServlet{
 	    	
 	    	List<CollegesInfo> colleges = collegeBO.searchColleges(search, page, province, course, type);
 	    	List<Course> courses = courseBO.getCourses();
-	    	List<String> addresses = addressBO.getAllDistrict();
 	    	List<TrainingFrame> frames = frameBO.getListFrame();
 	    	int count = collegeBO.countColleges(search, province, type, course);
 	    	
 	    	req.setAttribute("colleges", colleges);
 	    	req.setAttribute("courses", courses);
-	    	req.setAttribute("addresses", addresses);
 	    	req.setAttribute("frames", frames);
 	    	req.setAttribute("count", count);
 	    	req.setAttribute("page", page.getPage());
 	    	req.setAttribute("countPage", count%page.getMaxPageItem()>0 ? count/page.getMaxPageItem(): count/page.getMaxPageItem()-1);
 	    	
 	    	req.getRequestDispatcher("view/jsp/page/FilterUI.jsp").forward(req, resp);
-	    }else {
+	    }
+	    else {
 	    	resp.sendRedirect("/home");
 	    }
 	}
