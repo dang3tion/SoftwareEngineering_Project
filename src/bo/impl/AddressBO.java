@@ -13,10 +13,5 @@ public class AddressBO implements IAddressBO{
 		return instance;
 	}
 	private AddressBO() {}
-
-	@Override
-	public List<String> getAllDistrict() {
-		return AddressDAO.getInstance().getAllDistrict();
-	}
 	
 }

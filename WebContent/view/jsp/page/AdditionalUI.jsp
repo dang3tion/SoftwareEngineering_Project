@@ -553,7 +553,7 @@
 											<td>
 												<div class="input">
 													<input name="diem-nganh1" placeHolder="Nhập điểm"
-														type="number" value="" step=0.01>
+														type="text" value="">
 												</div>
 											</td>
 
@@ -690,7 +690,6 @@
                                     option.innerHTML = arr[a]['Title'];
                                     se.appendChild(option);
                                 }
-
                             });;
                     }
                     $.getJSON("${pageContext.request.contextPath}/address", function(data) {
@@ -703,7 +702,6 @@
                             option.innerHTML = arr[a]['Title'];
                             se.appendChild(option);
                         }
-
                     });;
                     
                     

@@ -20,5 +20,9 @@ public class FrameBO implements IFrameBO{
 	public List<TrainingFrame> getListFrame() {
 		return FrameDAO.getInstance().getListFrame();
 	}
+	@Override
+	public List<String> getNameFrameByCollege(int idCollege) {
+		return FrameDAO.getInstance().getListFrameByIdCollege(idCollege);
+	}
 
 }

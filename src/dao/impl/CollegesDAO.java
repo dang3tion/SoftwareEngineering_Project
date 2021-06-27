@@ -127,5 +127,44 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 		return count(sql, params);
 		
 	}
-	
+
+	@Override
+	public CollegesInfo getCollegeById(int id) {
+		String sql = "SELECT * FROM TRUONGHOC WHERE ID_TRUONG = ?";
+		List<CollegesInfo> list = query(sql, new CollegesMapper(), id);
+		return list.size() == 0 ? null : list.get(0);
+	}
+
+	@Override
+	public List<String> getAddress(int idCollege) {
+		List<String> result = new ArrayList<String>();
+		String sql = "SELECT DIACHI FROM DIACHI WHERE ID_TRUONG = "+idCollege;
+		try {
+			Statement st = SinglePool.getConnection().createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next())
+				result.add(rs.getNString(1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result; 
+	}
+
+	@Override
+	public List<String> getPhone(int idCollege) {
+		List<String> result = new ArrayList<String>();
+		String sql = "SELECT SDT FROM SDT WHERE ID_TRUONG = "+idCollege;
+		try {
+			Statement st = SinglePool.getConnection().createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next())
+				result.add(rs.getNString(1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result; 
+		
+	}
 }
