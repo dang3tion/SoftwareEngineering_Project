@@ -3,6 +3,7 @@ package controller.client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 @WebServlet(urlPatterns = { "/address" })
 public class AddressController extends HttpServlet {
 
@@ -20,6 +23,8 @@ public class AddressController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
 		System.out.println(jsonString);
+		PrintWriter writer = resp.getWriter();
+		writer.append(jsonString);
 	}
 
 	private static String getJSONString(String URL) {
