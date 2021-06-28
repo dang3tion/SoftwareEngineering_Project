@@ -155,19 +155,21 @@
 		 	inputPage.value = page;
 		 	searchForm.submit();
 		 }
-	$.getJSON("https://cors-anywhere.herokuapp.com/https://thongtindoanhnghiep.co/api/city/",(data)=> {
-		var list = data.LtsItem;
-		var province = document.getElementsByName("province")[0];
-		list.forEach((item, index)=>{
-			var ele = document.createElement("option");
-			ele.setAttribute("value", item.ID);
-			if(item.ID == provinceId){
-				ele.setAttribute("selected", "selected");
-			}
-			ele.textContent = item.Title;
-			province.appendChild(ele);
-		})
-	});	
+    $.ajax({
+    	url:"${pageContext.request.contextPath}/address",
+    	method: "GET",
+		success: function(data){
+			var list = JSON.parse(data).LtsItem;
+			var province = document.getElementsByName("province")[0];
+			list.forEach((item, index)=>{
+				var ele = document.createElement("option");
+				ele.setAttribute("value", item.ID);
+				if(item.ID == provinceId){
+					ele.setAttribute("selected", "selected");
+				}
+				ele.textContent = item.Title;
+				province.appendChild(ele);			})
+		}})
 
 	</script>
 </body>

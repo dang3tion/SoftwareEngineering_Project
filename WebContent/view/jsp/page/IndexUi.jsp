@@ -251,17 +251,20 @@
 
     <script src="${url}/js/search.js"></script> 
 	<jsp:include page="../component/footer.jsp"></jsp:include>
-	<script>
-	$.getJSON("https://cors-anywhere.herokuapp.com/https://thongtindoanhnghiep.co/api/city/",(data)=> {
-		var list = data.LtsItem;
-		var province = document.getElementsByName("province")[0];
-		list.forEach((item, index)=>{
-			var ele = document.createElement("option");
-			ele.setAttribute("value", item.ID);
-			ele.textContent = item.Title;
-			province.appendChild(ele);
-		})
-	});	
+	<script>	
+    $.ajax({
+    	url:"${pageContext.request.contextPath}/address",
+    	method: "GET",
+		success: function(data){
+			var list = JSON.parse(data).LtsItem;
+			var province = document.getElementsByName("province")[0];
+			list.forEach((item, index)=>{
+				var ele = document.createElement("option");
+				ele.setAttribute("value", item.ID);
+				ele.textContent = item.Title;
+				province.appendChild(ele);
+			})
+		}})
 	</script>
 </body>
 </html>

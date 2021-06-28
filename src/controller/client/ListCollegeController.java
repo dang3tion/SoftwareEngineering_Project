@@ -67,7 +67,7 @@ public class ListCollegeController extends HttpServlet{
 	    	req.setAttribute("course", course);
 	    	req.setAttribute("type", type);
 	    	
-	    	List<CollegesInfo> colleges = collegeBO.searchColleges(search, page, province, course, type);
+	    	List<CollegesInfo> colleges = collegeBO.searchColleges(search, page, province, type, course);
 	    	List<Course> courses = courseBO.getCourses();
 	    	List<TrainingFrame> frames = frameBO.getListFrame();
 	    	int count = collegeBO.countColleges(search, province, type, course);

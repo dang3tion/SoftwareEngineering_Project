@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -25,6 +26,10 @@ public class AddressController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
+		System.out.println(jsonString);
+
 		resp.setContentType("text/string;charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter writer = new PrintWriter(resp.getWriter());
@@ -49,7 +54,6 @@ public class AddressController extends HttpServlet {
 			writer.append(jsonString);
 			return;
 		}
-
 
 	}
 
