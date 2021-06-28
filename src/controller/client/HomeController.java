@@ -18,7 +18,7 @@ import bo.impl.CourseBO;
 import dao.IAddressDAO;
 import dao.ICollegesDAO;
 
-@WebServlet(urlPatterns = { "/" })
+@WebServlet(urlPatterns = { "/home" })
 public class HomeController extends HttpServlet {
 	private ICourseBO courseBO = CourseBO.getInstance();
 

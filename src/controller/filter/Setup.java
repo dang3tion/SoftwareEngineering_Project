@@ -11,6 +11,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -30,7 +31,11 @@ public class Setup implements Filter {
 				dispatcher.forward(request, response);
 				return;
 			}
+		} else if (rq.getRequestURI().substring(rq.getContextPath().length()).equals("/")) {
+			HttpServletResponse rsp = (HttpServletResponse) response;
+			rsp.sendRedirect(rq.getContextPath() + "/home");
 		}
+
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
