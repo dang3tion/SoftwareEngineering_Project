@@ -39,7 +39,7 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ?";
 			sql += ")))";
 		}
-		//
+		
 		sql += " ORDER BY @@CURSOR_ROWS OFFSET " + page.getOffset() + " ROWS FETCH NEXT " + page.getMaxPageItem()
 				+ " ROWS ONLY";
 		return query(sql, new CollegesMapper(), params);
@@ -107,7 +107,6 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 		return false;
 	}
 
-
 	@Override
 	public int countColleges(String search, Object... params) {
 		String sql = "SELECT COUNT(*) FROM TRUONGHOC TH ";
@@ -123,9 +122,9 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ?";
 			sql += ")))";
 		}
-				
+
 		return count(sql, params);
-		
+
 	}
 
 	@Override
@@ -138,33 +137,33 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 	@Override
 	public List<String> getAddress(int idCollege) {
 		List<String> result = new ArrayList<String>();
-		String sql = "SELECT DIACHI FROM DIACHI WHERE ID_TRUONG = "+idCollege;
+		String sql = "SELECT DIACHI FROM DIACHI WHERE ID_TRUONG = " + idCollege;
 		try {
 			Statement st = SinglePool.getConnection().createStatement();
 			ResultSet rs = st.executeQuery(sql);
-			while(rs.next())
+			while (rs.next())
 				result.add(rs.getNString(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		return result; 
+
+		return result;
 	}
 
 	@Override
 	public List<String> getPhone(int idCollege) {
 		List<String> result = new ArrayList<String>();
-		String sql = "SELECT SDT FROM SDT WHERE ID_TRUONG = "+idCollege;
+		String sql = "SELECT SDT FROM SDT WHERE ID_TRUONG = " + idCollege;
 		try {
 			Statement st = SinglePool.getConnection().createStatement();
 			ResultSet rs = st.executeQuery(sql);
-			while(rs.next())
+			while (rs.next())
 				result.add(rs.getNString(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		return result; 
-		
+
+		return result;
+
 	}
 }

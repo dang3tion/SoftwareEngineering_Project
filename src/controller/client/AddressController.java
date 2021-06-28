@@ -28,7 +28,6 @@ public class AddressController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
-		System.out.println(jsonString);
 
 		resp.setContentType("text/string;charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
@@ -40,7 +39,7 @@ public class AddressController extends HttpServlet {
 		if (req.getParameter("id") != null) {
 			try {
 				int id = Integer.parseInt(req.getParameter("id"));
-				String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/" + id + "/district");
+				 jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/" + id + "/district");
 				writer.append(jsonString);
 				return;
 			} catch (Exception e) {
@@ -48,7 +47,7 @@ public class AddressController extends HttpServlet {
 			}
 
 		} else {
-			String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
+			 jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
 			resp.setContentType("text/string;charset=UTF-8");
 
 			writer.append(jsonString);
