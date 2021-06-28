@@ -3103,7 +3103,7 @@ figure figcaption {
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid rgb(158, 158, 158);
   border-collapse: collapse;
   padding:10px
 }

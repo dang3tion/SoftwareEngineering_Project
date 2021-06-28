@@ -1,8 +1,12 @@
 package controller.client;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -14,17 +18,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 @WebServlet(urlPatterns = { "/address" })
 public class AddressController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
 		System.out.println(jsonString);
-		PrintWriter writer = resp.getWriter();
-		writer.append(jsonString);
+
+		resp.setContentType("text/string;charset=UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		PrintWriter writer = new PrintWriter(resp.getWriter());
+		resp.addHeader("Access-Control-Allow-Origin", "*");
+		resp.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+		resp.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+		resp.addHeader("Access-Control-Max-Age", "1728000");
+		if (req.getParameter("id") != null) {
+			try {
+				int id = Integer.parseInt(req.getParameter("id"));
+				String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/" + id + "/district");
+				writer.append(jsonString);
+				return;
+			} catch (Exception e) {
+				writer.append("wrong input");
+			}
+
+		} else {
+			String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
+			resp.setContentType("text/string;charset=UTF-8");
+
+			writer.append(jsonString);
+			return;
+		}
+
 	}
 
 	private static String getJSONString(String URL) {
@@ -49,7 +79,9 @@ public class AddressController extends HttpServlet {
 			e.printStackTrace();
 		}
 		return JSONString;
-	}public static void main(String[] args) {
+	}
+
+	public static void main(String[] args) {
 		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/city/");
 		System.out.println(jsonString);
 	}
