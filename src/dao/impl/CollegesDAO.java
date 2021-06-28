@@ -30,18 +30,19 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 		sql += "WHERE TH.TENTRUONG LIKE '%" + search + "%' ";
 		// filter condition
 		if (params.length > 0) {
-			sql += "AND EXISTS(SELECT * FROM DIACHI DC WHERE TINH LIKE ? AND LOAITRUONG LIKE ? AND DC.ID_TRUONG = TH.ID_TRUONG";
+			sql += "AND EXISTS(SELECT * FROM DIACHI DC WHERE TINH LIKE ? AND DC.ID_TRUONG = TH.ID_TRUONG ";
 			sql += ") AND EXISTS(";
-			sql += "SELECT * FROM KHUNGDT_TRUONG KT WHERE KT.ID_TRUONG = TH.ID_TRUONG AND ";
-			sql += "EXISTS(";
-			sql += "SELECT * FROM NGANH_TOHOP NT WHERE NT.ID_KDT = KT.ID_KDT AND ";
-			sql += "EXISTS(";
-			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ?";
+			sql += "SELECT * FROM KHUNGDT_TRUONG KT WHERE KT.ID_TRUONG = TH.ID_TRUONG ";
+			sql += "AND EXISTS(";
+			sql += "SELECT * FROM KHUNG_DT KDT WHERE KDT.LOAIKHUNG LIKE ? AND KT.ID_KHUNG = KDT.ID_KHUNG ";
+			sql += ") AND EXISTS(";
+			sql += "SELECT * FROM NGANH_TOHOP NT WHERE NT.ID_KDT = KT.ID_KDT ";
+			sql += "AND EXISTS(";
+			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ? ";
 			sql += ")))";
 		}
-
-//		sql += " ORDER BY @@CURSOR_ROWS OFFSET " + page.getOffset() + " ROWS FETCH NEXT " + page.getMaxPageItem()
-//				+ " ROWS ONLY";
+		sql += " ORDER BY @@CURSOR_ROWS OFFSET " + page.getOffset() + " ROWS FETCH NEXT " + page.getMaxPageItem()
+				+ " ROWS ONLY";
 		return query(sql, new CollegesMapper(), params);
 	}
 
@@ -113,13 +114,15 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 		sql += "WHERE TH.TENTRUONG LIKE '%" + search + "%' ";
 		// filter condition
 		if (params.length > 0) {
-			sql += "AND EXISTS(SELECT * FROM DIACHI DC WHERE TINH LIKE ? AND LOAITRUONG LIKE ? AND DC.ID_TRUONG = TH.ID_TRUONG";
+			sql += "AND EXISTS(SELECT * FROM DIACHI DC WHERE TINH LIKE ? AND DC.ID_TRUONG = TH.ID_TRUONG ";
 			sql += ") AND EXISTS(";
-			sql += "SELECT * FROM KHUNGDT_TRUONG KT WHERE KT.ID_TRUONG = TH.ID_TRUONG AND ";
-			sql += "EXISTS(";
-			sql += "SELECT * FROM NGANH_TOHOP NT WHERE NT.ID_KDT = KT.ID_KDT AND ";
-			sql += "EXISTS(";
-			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ?";
+			sql += "SELECT * FROM KHUNGDT_TRUONG KT WHERE KT.ID_TRUONG = TH.ID_TRUONG ";
+			sql += "AND EXISTS(";
+			sql += "SELECT * FROM KHUNG_DT KDT WHERE KDT.LOAIKHUNG LIKE ? AND KT.ID_KHUNG = KDT.ID_KHUNG ";
+			sql += ") AND EXISTS(";
+			sql += "SELECT * FROM NGANH_TOHOP NT WHERE NT.ID_KDT = KT.ID_KDT ";
+			sql += "AND EXISTS(";
+			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ? ";
 			sql += ")))";
 		}
 
