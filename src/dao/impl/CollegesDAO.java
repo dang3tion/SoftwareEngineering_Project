@@ -41,8 +41,8 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ? ";
 			sql += ")))";
 		}
-		sql += " ORDER BY TH.ID_TRUONG OFFSET " + page.getOffset() + " ROWS FETCH NEXT " + page.getMaxPageItem()
-				+ " ROWS ONLY";
+		sql += " LIMIT " + page.getOffset() + ", " + page.getMaxPageItem();
+		System.out.println(sql);
 		return query(sql, new CollegesMapper(), params);
 	}
 
@@ -125,6 +125,7 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ? ";
 			sql += ")))";
 		}
+
 
 		return count(sql, params);
 

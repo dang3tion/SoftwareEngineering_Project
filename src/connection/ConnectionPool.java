@@ -28,7 +28,7 @@ public class ConnectionPool {
 
 	// Táº¡o má»›i 1 single connection
 	private Connection createConnection() {
-		String URL = Config.SERVER_NAME + ";databaseName=" + Config.DATABASE_NAME;
+		String URL = Config.SERVER_NAME + Config.DATABASE_NAME;
 		Connection connection = null;
 		try {
 			Class.forName(Config.DBDRIVER);
@@ -61,4 +61,5 @@ public class ConnectionPool {
 			availableConnections.add(connection);
 		}
 	}
+	
 }

@@ -3,8 +3,6 @@ pom.xml
 .project
 .classpath
 target/*
-
-
 target/m2e-wtp/web-resources/META-INF/*
 
 
