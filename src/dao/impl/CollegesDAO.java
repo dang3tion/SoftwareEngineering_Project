@@ -42,7 +42,6 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 			sql += ")))";
 		}
 		sql += " LIMIT " + page.getOffset() + ", " + page.getMaxPageItem();
-		System.out.println(sql);
 		return query(sql, new CollegesMapper(), params);
 	}
 
