@@ -26,17 +26,17 @@ import connection.SinglePool;
 
 public class Config {
 	public static int DB_MAX_CONNECTIONS = 10;
-	public static String SERVER_NAME = "jdbc:mysql://sql6.freemysqlhosting.net:3306/";
-	public static String DATABASE_NAME = "sql6423468";
-	public static String USERNAME_DB = "sql6423468";
-	public static String PASSWORD_DB = "IcGxrWrbrm";
-	public static String DBDRIVER = "com.mysql.cj.jdbc.Driver";
+	public static String SERVER_NAME = "jdbc:sqlserver://mssql-45585-0.cloudclusters.net:18602;";
+	public static String DATABASE_NAME = "databaseName=TT_TUYENSINH_2";
+	public static String USERNAME_DB = "robocon321";
+	public static String PASSWORD_DB = "CNPMtest2021";
+	public static String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
 //	public static void main(String[] args) {
 //			Connection conn = null;
 //			try {
 //				Class.forName(DBDRIVER);
-//				conn = DriverManager.getConnection(SERVER_NAME+DATABASE_NAME,USERNAME_DB,PASSWORD_DB);
+//				conn = DriverManager.getConnection(SERVER_NAME + DATABASE_NAME,USERNAME_DB,PASSWORD_DB);
 //				System.out.println("connect successfully!");
 //				Statement st = conn.createStatement();
 //				ResultSet rs = st.executeQuery("SELECT * FROM DIACHI");
