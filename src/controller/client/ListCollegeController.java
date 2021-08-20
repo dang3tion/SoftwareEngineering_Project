@@ -43,14 +43,14 @@ public class ListCollegeController extends HttpServlet{
 	    String action = req.getParameter("search-method");
 	    
 	    if(action.equals("ajax")) {
-	    	String search = req.getParameter("text");
+	    	String search = req.getParameter("text").trim();
 			List<CollegesInfo> list = collegeBO.searchColleges(search);
 	    	req.setAttribute("search", search);
 	    	
 			PrintWriter writer = resp.getWriter();
 			writer.append(gson.toJson(list).toString());
 	    }else if(action.equals("normal")) {
-	    	String search = req.getParameter("search");
+	    	String search = req.getParameter("search").trim();
 	    	String province = req.getParameter("province");
 	    	String course = req.getParameter("course");
 	    	String type = req.getParameter("type") == null ? "" : req.getParameter("type");

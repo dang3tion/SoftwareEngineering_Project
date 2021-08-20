@@ -276,11 +276,13 @@
 
 	<script src="${url}/js/search.js"></script>
 	<jsp:include page="../component/footer.jsp"></jsp:include>
-	<script>	
+	<script>
+	var a = null;
     $.ajax({
     	url:"${pageContext.request.contextPath}/address",
     	method: "GET",
 		success: function(data){
+			a = data;
 			var list = JSON.parse(data).LtsItem;
 			var province = document.getElementsByName("province")[0];
 			list.forEach((item, index)=>{
