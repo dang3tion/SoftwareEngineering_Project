@@ -36,8 +36,8 @@ public class CollegesDAO extends AbstractDAO<CollegesInfo> implements ICollegesD
 			sql += "AND EXISTS(";
 			sql += "SELECT * FROM KHUNG_DT KDT WHERE KDT.LOAIKHUNG LIKE ? AND KT.ID_KHUNG = KDT.ID_KHUNG ";
 			sql += ") AND EXISTS(";
-			sql += "SELECT * FROM NGANH_TOHOP NT WHERE NT.ID_KDT = KT.ID_KDT ";
-			sql += "AND EXISTS(";
+			sql += "SELECT * FROM NGANH_TOHOP NT WHERE ";
+			sql += " EXISTS(";
 			sql += "SELECT * FROM NGANH N WHERE N.ID_NGANH = NT.ID_NGANH AND N.TEN_NGANH LIKE ? ";
 			sql += ")))";
 		}
