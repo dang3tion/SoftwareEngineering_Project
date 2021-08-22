@@ -803,7 +803,7 @@
 		var select = document.getElementsByTagName('select');
 		for (let i = 0; i < input.length; i++) {
 			let c = input[i];
-			if (c.value === null || c.value === "") {	
+			if (c.value === null || c.value.trim() === "") {	
 				sendMsgValidate('Vui lòng nhập thông tin đầy đủ các trường nhập liệu',false);
 				c.style.border = "1px solid #ff5757";
 				return false;
